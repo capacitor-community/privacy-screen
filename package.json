@@ -62,5 +62,10 @@
   },
   "bugs": {
     "url": "https://github.com/robingenz/capacitor-privacy-screen/issues"
+  },
+  "standard-version": {
+    "scripts": {
+      "prerelease": "npm run build"
+    }
   }
 }
