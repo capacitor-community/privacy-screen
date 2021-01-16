@@ -1,7 +1,7 @@
 {
   "name": "capacitor-privacy-screen",
   "version": "0.0.1",
-  "description": "Capacitor Privacy Screen Plugin",
+  "description": "Capacitor plugin that protects your app from displaying a screenshot in Recents screen/App Switcher.",
   "main": "dist/plugin.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -18,22 +18,22 @@
   "author": "Robin Genz <mail@robingenz.dev>",
   "license": "MIT",
   "devDependencies": {
-    "@capacitor/android": "^2.4.6",
-    "@capacitor/core": "^2.4.6",
-    "@capacitor/ios": "^2.4.6",
-    "@ionic/prettier-config": "^1.0.0",
-    "@ionic/swiftlint-config": "^1.0.0",
-    "@rollup/plugin-node-resolve": "^8.1.0",
-    "prettier": "^2.0.5",
-    "prettier-plugin-java": "^0.8.0",
-    "rimraf": "^3.0.0",
-    "rollup": "^2.21.0",
+    "@capacitor/android": "2.4.6",
+    "@capacitor/core": "2.4.6",
+    "@capacitor/ios": "2.4.6",
+    "@ionic/prettier-config": "1.0.0",
+    "@ionic/swiftlint-config": "1.0.0",
+    "@rollup/plugin-node-resolve": "8.1.0",
+    "prettier": "2.0.5",
+    "prettier-plugin-java": "0.8.0",
+    "rimraf": "3.0.0",
+    "rollup": "2.21.0",
     "standard-version": "9.1.0",
-    "swiftlint": "^1.0.1",
-    "typescript": "~3.8.3"
+    "swiftlint": "1.0.1",
+    "typescript": "3.8.3"
   },
   "peerDependencies": {
-    "@capacitor/core": "^2.4.6"
+    "@capacitor/core": "2.4.6"
   },
   "files": [
     "dist/",
