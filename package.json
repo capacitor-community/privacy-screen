@@ -1,7 +1,7 @@
 {
   "name": "capacitor-privacy-screen",
   "version": "0.0.1",
-  "description": "Capacitor Privacy Screen Plugin",
+  "description": "Capacitor plugin that protects your app from displaying a screenshot in Recents screen/App Switcher.",
   "main": "dist/plugin.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
