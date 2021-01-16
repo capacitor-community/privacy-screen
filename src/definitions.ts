@@ -4,6 +4,4 @@ declare module '@capacitor/core' {
   }
 }
 
-export interface PrivacyScreenPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
-}
+export interface PrivacyScreenPlugin {}

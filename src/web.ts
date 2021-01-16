@@ -8,11 +8,6 @@ export class PrivacyScreenWeb extends WebPlugin implements PrivacyScreenPlugin {
       platforms: ['web'],
     });
   }
-
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
-  }
 }
 
 const PrivacyScreen = new PrivacyScreenWeb();
