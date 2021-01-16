@@ -1,20 +1,22 @@
 package dev.robingenz.capacitor.privacyscreen;
 
-import com.getcapacitor.JSObject;
+import android.view.WindowManager;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.getcapacitor.NativePlugin;
 import com.getcapacitor.Plugin;
-import com.getcapacitor.PluginCall;
-import com.getcapacitor.PluginMethod;
 
 @NativePlugin
 public class PrivacyScreen extends Plugin {
-
-    @PluginMethod
-    public void echo(PluginCall call) {
-        String value = call.getString("value");
-
-        JSObject ret = new JSObject();
-        ret.put("value", value);
-        call.success(ret);
+    /**
+     * Called when the plugin is first constructed in the bridge.
+     * This method sets the FLAG_SECURE flag to treat the content of the window as secure,
+     * preventing it from appearing in screenshots or from being viewed on non-secure displays.
+     * @see <a href="https://developer.android.com/reference/android/view/WindowManager.LayoutParams#FLAG_SECURE">Android Developer</a>
+     */
+    public void load() {
+        AppCompatActivity activity = getActivity();
+        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
     }
 }
