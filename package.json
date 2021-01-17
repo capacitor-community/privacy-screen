@@ -58,7 +58,7 @@
   "swiftlint": "@ionic/swiftlint-config",
   "repository": {
     "type": "git",
-    "url": "https://github.com/robingenz/capacitor-privacy-screen"
+    "url": "https://github.com/robingenz/capacitor-privacy-screen.git"
   },
   "bugs": {
     "url": "https://github.com/robingenz/capacitor-privacy-screen/issues"
