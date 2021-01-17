@@ -1,5 +1,7 @@
 # capacitor-privacy-screen
 
+[![maintenance](https://img.shields.io/maintenance/yes/2021)](https://github.com/robingenz/capacitor-privacy-screen)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/robingenz/capacitor-privacy-screen/CI/main)](https://github.com/robingenz/capacitor-privacy-screen/actions?query=workflow%3ACI)
 [![npm version](https://img.shields.io/npm/v/capacitor-privacy-screen)](https://www.npmjs.com/package/capacitor-privacy-screen)
 [![license](https://img.shields.io/npm/l/capacitor-privacy-screen)](https://github.com/robingenz/capacitor-privacy-screen/blob/main/LICENSE)
 
