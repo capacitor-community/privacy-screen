@@ -77,7 +77,3 @@ The plugin only needs to be installed.
 ## Changelog
 
 See [CHANGELOG.md](https://github.com/capacitor-community/privacy-screen/blob/main/CHANGELOG.md).
-
-## License
-
-See [LICENSE](https://github.com/capacitor-community/privacy-screen/blob/main/LICENSE).
