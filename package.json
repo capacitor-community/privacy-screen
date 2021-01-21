@@ -39,7 +39,7 @@
     "dist/",
     "ios/",
     "android/",
-    "CapacitorPrivacyScreen.podspec"
+    "CapacitorCommunityPrivacyScreen.podspec"
   ],
   "keywords": [
     "capacitor",
