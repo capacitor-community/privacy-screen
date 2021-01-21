@@ -18,11 +18,18 @@ public class PrivacyScreen: CAPPlugin {
         NotificationCenter.default.removeObserver(self)
     }
 
-    @objc func onAppDidBecomeActive() {
-        self.webView.window?.isHidden = false
+    @objc func onAppWillResignActive() {
+        let privacyViewController = UIViewController()
+        privacyViewController.view.backgroundColor = UIColor.gray;
+        privacyViewController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        DispatchQueue.main.async {
+            self.bridge.viewController.present(privacyViewController, animated: false, completion: nil)
+        }
     }
 
-    @objc func onAppWillResignActive() {
-        self.webView.window?.isHidden = true
+    @objc func onAppDidBecomeActive() {
+        DispatchQueue.main.async {
+            self.bridge.viewController.dismiss(animated: false, completion: nil)
+        }
     }
 }
