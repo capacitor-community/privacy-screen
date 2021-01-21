@@ -1,4 +1,4 @@
-package dev.robingenz.capacitor.privacyscreen;
+package com.getcapacitor.plugin.privacyscreen;
 
 import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;

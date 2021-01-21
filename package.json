@@ -1,5 +1,5 @@
 {
-  "name": "capacitor-privacy-screen",
+  "name": "@capacitor-community/privacy-screen",
   "version": "1.0.0",
   "description": "Capacitor plugin that protects your app from displaying a screenshot in Recents screen/App Switcher.",
   "main": "dist/plugin.js",
@@ -39,7 +39,7 @@
     "dist/",
     "ios/",
     "android/",
-    "CapacitorPrivacyScreen.podspec"
+    "CapacitorCommunityPrivacyScreen.podspec"
   ],
   "keywords": [
     "capacitor",
@@ -58,9 +58,9 @@
   "swiftlint": "@ionic/swiftlint-config",
   "repository": {
     "type": "git",
-    "url": "https://github.com/robingenz/capacitor-privacy-screen.git"
+    "url": "https://github.com/capacitor-community/privacy-screen.git"
   },
   "bugs": {
-    "url": "https://github.com/robingenz/capacitor-privacy-screen/issues"
+    "url": "https://github.com/capacitor-community/privacy-screen/issues"
   }
 }
