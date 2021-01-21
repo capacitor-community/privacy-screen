@@ -1,9 +1,9 @@
-# capacitor-privacy-screen
+# capacitor-community/privacy-screen
 
-[![maintenance](https://img.shields.io/maintenance/yes/2021)](https://github.com/robingenz/capacitor-privacy-screen)
-[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/robingenz/capacitor-privacy-screen/CI/main)](https://github.com/robingenz/capacitor-privacy-screen/actions?query=workflow%3ACI)
-[![npm version](https://img.shields.io/npm/v/capacitor-privacy-screen)](https://www.npmjs.com/package/capacitor-privacy-screen)
-[![license](https://img.shields.io/npm/l/capacitor-privacy-screen)](https://github.com/robingenz/capacitor-privacy-screen/blob/main/LICENSE)
+[![maintenance](https://img.shields.io/maintenance/yes/2021)](https://github.com/capacitor-community/privacy-screen)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/capacitor-community/privacy-screen/CI/main)](https://github.com/capacitor-community/privacy-screen/actions?query=workflow%3ACI)
+[![npm version](https://img.shields.io/npm/v/@capacitor-community/privacy-screen)](https://www.npmjs.com/package/@capacitor-community/privacy-screen)
+[![license](https://img.shields.io/npm/l/@capacitor-community/privacy-screen)](https://github.com/capacitor-community/privacy-screen/blob/main/LICENSE)
 
 ⚡️ [Capacitor](https://capacitorjs.com/) plugin that protects your app from displaying a screenshot in [Recents screen](https://developer.android.com/guide/components/activities/recents)/[App Switcher](https://support.apple.com/en-us/HT202070).  
 
@@ -13,7 +13,7 @@ On **iOS**, this plugin hides the webview window when the app is no longer activ
 ## Installation
 
 ```
-npm install capacitor-privacy-screen
+npm install @capacitor-community/privacy-screen
 npx cap sync
 ```
 
@@ -56,8 +56,8 @@ The plugin only needs to be installed.
 
 ## Changelog
 
-See [CHANGELOG.md](https://github.com/robingenz/capacitor-privacy-screen/blob/main/CHANGELOG.md).
+See [CHANGELOG.md](https://github.com/capacitor-community/privacy-screen/blob/main/CHANGELOG.md).
 
 ## License
 
-See [LICENSE](https://github.com/robingenz/capacitor-privacy-screen/blob/main/LICENSE).
+See [LICENSE](https://github.com/capacitor-community/privacy-screen/blob/main/LICENSE).
