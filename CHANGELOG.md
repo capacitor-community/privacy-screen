@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* use UIViewController as overlay ([#12](https://github.com/capacitor-community/privacy-screen/issues/12)) ([a2bf3f8](https://github.com/capacitor-community/privacy-screen/commit/a2bf3f8397991dd21f96b351384db6acc3226dc7))
+* **ios:** use UIViewController as overlay ([#12](https://github.com/capacitor-community/privacy-screen/issues/12)) ([a2bf3f8](https://github.com/capacitor-community/privacy-screen/commit/a2bf3f8397991dd21f96b351384db6acc3226dc7))
 
 ## 1.0.0 (2021-01-16)
 
