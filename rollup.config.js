@@ -5,11 +5,17 @@ export default {
   output: {
     file: 'dist/plugin.js',
     format: 'iife',
-    name: 'capacitorPrivacyScreen',
+    name: 'capacitorPlugin', // TODO: change this
     globals: {
       '@capacitor/core': 'capacitorExports',
     },
     sourcemap: true,
   },
-  plugins: [nodeResolve()],
+  plugins: [
+    nodeResolve({
+      // allowlist of dependencies to bundle in
+      // @see https://github.com/rollup/plugins/tree/master/packages/node-resolve#resolveonly
+      resolveOnly: ['lodash'],
+    }),
+  ],
 };
