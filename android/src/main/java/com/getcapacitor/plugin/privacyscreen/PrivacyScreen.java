@@ -19,38 +19,38 @@ public class PrivacyScreen extends Plugin {
      * @see <a href="https://developer.android.com/reference/android/view/WindowManager.LayoutParams#FLAG_SECURE">Android Developers</a>
      */
     public void load() {
-        this.addFlags();
+        addFlags();
     }
 
     @PluginMethod
-    public void enable(PluginCall call) {
-        this.addFlags();
-        call.resolve();
+    public void enable(final PluginCall call) {
+        this.getBridge().executeOnMainThread(new Runnable() {
+            @Override
+            public void run() {
+                addFlags();
+                call.resolve();
+            }
+        });
     }
 
     @PluginMethod
-    public void disable(PluginCall call) {
-        this.clearFlags();
-        call.resolve();
+    public void disable(final PluginCall call) {
+        this.getBridge().executeOnMainThread(new Runnable() {
+            @Override
+            public void run() {
+                clearFlags();
+                call.resolve();
+            }
+        });
     }
 
     private void addFlags() {
-        this.getBridge().executeOnMainThread(new Runnable() {
-            @Override
-            public void run() {
-                Window window = getActivity().getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-            }
-        });
+        Window window = getActivity().getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     private void clearFlags() {
-        this.getBridge().executeOnMainThread(new Runnable() {
-            @Override
-            public void run() {
-                Window window = getActivity().getWindow();
-                window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
-            }
-        });
+        Window window = getActivity().getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
     }
 }
