@@ -78,6 +78,7 @@ However, you have the option to enable/disable the protection:
 
 ```js
 import { Plugins } from '@capacitor/core';
+import '@capacitor-community/privacy-screen';
 
 const enable = async () => {
   await Plugins.PrivacyScreen.enable();
