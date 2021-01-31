@@ -19,15 +19,15 @@ Capacitor Privacy Screen Plugin
 
 ## Introduction
 
-⚡️ [Capacitor](https://capacitorjs.com/) plugin that protects your app from displaying a screenshot in [Recents screen](https://developer.android.com/guide/components/activities/recents)/[App Switcher](https://support.apple.com/en-us/HT202070).  
+⚡️ [Capacitor](https://capacitorjs.com/) plugin that protects your app from displaying a screenshot in [Recents screen](https://developer.android.com/guide/components/activities/recents)/[App Switcher](https://support.apple.com/en-us/HT202070).
 
 On **Android**, this plugin sets the [FLAG_SECURE](https://developer.android.com/reference/android/view/WindowManager.LayoutParams#FLAG_SECURE) flag to treat the content of the window as secure, preventing it from appearing in screenshots or from being viewed on non-secure displays.  
 On **iOS**, this plugin hides the webview window when the app is no longer active and loses focus ([UIApplicationWillResignActiveNotification](https://developer.apple.com/documentation/uikit/uiapplicationwillresignactivenotification)) so that a gray screen is shown instead.
 
 ## Maintainers
 
-| Maintainer | GitHub | Social |
-| -----------| -------| -------|
+| Maintainer | GitHub                                    | Social                                        |
+| ---------- | ----------------------------------------- | --------------------------------------------- |
 | Robin Genz | [robingenz](https://github.com/robingenz) | [@robin_genz](https://twitter.com/robin_genz) |
 
 ## Installation
@@ -73,6 +73,20 @@ No configuration required for this plugin.
 ## Usage
 
 The plugin only needs to be installed.
+The protection is enabled by default.
+However, you have the option to enable/disable the protection:
+
+```js
+import { Plugins } from '@capacitor/core';
+
+const enable = async () => {
+  await Plugins.PrivacyScreen.enable();
+};
+
+const disable = async () => {
+  await Plugins.PrivacyScreen.disable();
+};
+```
 
 ## Changelog
 
