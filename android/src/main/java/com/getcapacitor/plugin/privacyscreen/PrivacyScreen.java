@@ -35,12 +35,22 @@ public class PrivacyScreen extends Plugin {
     }
 
     private void addFlags() {
-        Window window = getActivity().getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        this.getBridge().executeOnMainThread(new Runnable() {
+            @Override
+            public void run() {
+                Window window = getActivity().getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+            }
+        });
     }
 
     private void clearFlags() {
-        Window window = getActivity().getWindow();
-        window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        this.getBridge().executeOnMainThread(new Runnable() {
+            @Override
+            public void run() {
+                Window window = getActivity().getWindow();
+                window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+            }
+        });
     }
 }
