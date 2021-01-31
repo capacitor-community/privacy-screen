@@ -19,21 +19,28 @@ public class PrivacyScreen extends Plugin {
      * @see <a href="https://developer.android.com/reference/android/view/WindowManager.LayoutParams#FLAG_SECURE">Android Developers</a>
      */
     public void load() {
-        Window window = getActivity().getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        this.addFlags();
     }
 
     @PluginMethod
     public void enable(PluginCall call) {
-        Window window = getActivity().getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        this.addFlags();
         call.resolve();
     }
 
     @PluginMethod
     public void disable(PluginCall call) {
+        this.clearFlags();
+        call.resolve();
+    }
+
+    private void addFlags() {
+        Window window = getActivity().getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+    }
+
+    private void clearFlags() {
         Window window = getActivity().getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
-        call.resolve();
     }
 }
