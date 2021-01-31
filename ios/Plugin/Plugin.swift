@@ -7,6 +7,9 @@ import Capacitor
  */
 @objc(PrivacyScreen)
 public class PrivacyScreen: CAPPlugin {
+    private var isEnabled = true
+    private var privacyViewController: UIViewController?
+    
     override public func load() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDidBecomeActive),
                                                name: UIApplication.didBecomeActiveNotification, object: nil)
@@ -17,19 +20,32 @@ public class PrivacyScreen: CAPPlugin {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
+    @objc func enable(_ call: CAPPluginCall) {
+        self.isEnabled = true
+        call.resolve()
+    }
+    
+    @objc func disable(_ call: CAPPluginCall) {
+        self.isEnabled = false
+        call.resolve()
+    }
 
     @objc func onAppWillResignActive() {
-        let privacyViewController = UIViewController()
-        privacyViewController.view.backgroundColor = UIColor.gray;
-        privacyViewController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        guard self.isEnabled else {
+            return
+        }
+        self.privacyViewController = UIViewController()
+        self.privacyViewController!.view.backgroundColor = UIColor.gray;
+        self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
         DispatchQueue.main.async {
-            self.bridge.viewController.present(privacyViewController, animated: false, completion: nil)
+            self.bridge.viewController.present(self.privacyViewController!, animated: false, completion: nil)
         }
     }
 
     @objc func onAppDidBecomeActive() {
         DispatchQueue.main.async {
-            self.bridge.viewController.dismiss(animated: false, completion: nil)
+            self.privacyViewController?.dismiss(animated: false, completion: nil)
         }
     }
 }
