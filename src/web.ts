@@ -10,11 +10,11 @@ export class PrivacyScreenWeb extends WebPlugin implements PrivacyScreenPlugin {
   }
 
   async enable(): Promise<void> {
-    throw new Error('Web platform is not supported.');
+    console.warn('Web platform is not supported.');
   }
 
   async disable(): Promise<void> {
-    throw new Error('Web platform is not supported.');
+    console.warn('Web platform is not supported.');
   }
 }
 
