@@ -24,24 +24,32 @@ public class PrivacyScreen extends Plugin {
 
     @PluginMethod
     public void enable(final PluginCall call) {
-        this.getBridge().executeOnMainThread(new Runnable() {
-            @Override
-            public void run() {
-                addFlags();
-                call.resolve();
-            }
-        });
+        this.getBridge()
+            .executeOnMainThread(
+                new Runnable() {
+
+                    @Override
+                    public void run() {
+                        addFlags();
+                        call.resolve();
+                    }
+                }
+            );
     }
 
     @PluginMethod
     public void disable(final PluginCall call) {
-        this.getBridge().executeOnMainThread(new Runnable() {
-            @Override
-            public void run() {
-                clearFlags();
-                call.resolve();
-            }
-        });
+        this.getBridge()
+            .executeOnMainThread(
+                new Runnable() {
+
+                    @Override
+                    public void run() {
+                        clearFlags();
+                        call.resolve();
+                    }
+                }
+            );
     }
 
     private void addFlags() {
