@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/capacitor-community/privacy-screen/compare/v1.0.1...v1.1.0) (2021-01-31)
+
+
+### Features
+
+* implement enable/disable methods ([#14](https://github.com/capacitor-community/privacy-screen/issues/14)) ([4bc89d3](https://github.com/capacitor-community/privacy-screen/commit/4bc89d32b6ea4eb7bc1ca4e9841b632fa2625d54))
+
 ### [1.0.1](https://github.com/capacitor-community/privacy-screen/compare/v1.0.0...v1.0.1) (2021-01-21)
 
 
