@@ -27,7 +27,6 @@ public class PrivacyScreen extends Plugin {
         this.getBridge()
             .executeOnMainThread(
                 new Runnable() {
-
                     @Override
                     public void run() {
                         addFlags();
@@ -42,7 +41,6 @@ public class PrivacyScreen extends Plugin {
         this.getBridge()
             .executeOnMainThread(
                 new Runnable() {
-
                     @Override
                     public void run() {
                         clearFlags();
