@@ -102,8 +102,8 @@ const disable = async () => {
 
 <docgen-index>
 
-- [`enable()`](#enable)
-- [`disable()`](#disable)
+* [`enable()`](#enable)
+* [`disable()`](#disable)
 
 </docgen-index>
 
@@ -122,7 +122,8 @@ Only available for Android and iOS.
 
 **Since:** 1.1.0
 
----
+--------------------
+
 
 ### disable()
 
@@ -136,7 +137,7 @@ Only available for Android and iOS.
 
 **Since:** 1.1.0
 
----
+--------------------
 
 </docgen-api>
 
