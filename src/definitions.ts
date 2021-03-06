@@ -1,9 +1,3 @@
-declare module '@capacitor/core' {
-  interface PluginRegistry {
-    PrivacyScreen: PrivacyScreenPlugin;
-  }
-}
-
 export interface PrivacyScreenPlugin {
   /**
    * Supported platform(s): Android, iOS
