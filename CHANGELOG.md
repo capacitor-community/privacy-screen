@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/capacitor-community/privacy-screen/compare/v1.1.1...v1.1.2) (2021-03-06)
+
+
+### Bug Fixes
+
+* update peer dependency version ([#22](https://github.com/capacitor-community/privacy-screen/issues/22)) ([940dd1b](https://github.com/capacitor-community/privacy-screen/commit/940dd1b8195872d04950e47a90ad102c9d463c9e))
+
 ### [1.1.1](https://github.com/capacitor-community/privacy-screen/compare/v1.1.0...v1.1.1) (2021-01-31)
 
 
