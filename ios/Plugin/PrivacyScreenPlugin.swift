@@ -5,8 +5,8 @@ import Capacitor
  * Please read the Capacitor iOS Plugin Development Guide
  * here: https://capacitorjs.com/docs/plugins/ios
  */
-@objc(PrivacyScreen)
-public class PrivacyScreen: CAPPlugin {
+@objc(PrivacyScreenPlugin)
+public class PrivacyScreenPlugin: CAPPlugin {
     private var isEnabled = true
     private var privacyViewController: UIViewController?
     
