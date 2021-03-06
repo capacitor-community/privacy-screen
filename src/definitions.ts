@@ -1,12 +1,18 @@
 export interface PrivacyScreenPlugin {
   /**
-   * Supported platform(s): Android, iOS
    * Enables the privacy screen protection.
+   *
+   * Only available for Android and iOS.
+   *
+   * @since 1.1.0
    */
   enable(): Promise<void>;
   /**
-   * Supported platform(s): Android, iOS
    * Disables the privacy screen protection.
+   *
+   * Only available for Android and iOS.
+   *
+   * @since 1.1.0
    */
   disable(): Promise<void>;
 }

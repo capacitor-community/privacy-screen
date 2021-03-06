@@ -90,11 +90,45 @@ const disable = async () => {
 
 ## API
 
-<docgen-index></docgen-index>
+<docgen-index>
+
+* [`enable()`](#enable)
+* [`disable()`](#disable)
+
+</docgen-index>
 
 <docgen-api>
-<!-- run docgen to generate docs from the source -->
-<!-- More info: https://github.com/ionic-team/capacitor-docgen -->
+<!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
+
+### enable()
+
+```typescript
+enable() => Promise<void>
+```
+
+Enables the privacy screen protection.
+
+Only available for Android and iOS.
+
+**Since:** 1.1.0
+
+--------------------
+
+
+### disable()
+
+```typescript
+disable() => Promise<void>
+```
+
+Disables the privacy screen protection.
+
+Only available for Android and iOS.
+
+**Since:** 1.1.0
+
+--------------------
+
 </docgen-api>
 
 ## Changelog
