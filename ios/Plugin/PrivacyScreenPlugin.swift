@@ -39,7 +39,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
         self.privacyViewController!.view.backgroundColor = UIColor.gray;
         self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
         DispatchQueue.main.async {
-            self.bridge.viewController.present(self.privacyViewController!, animated: false, completion: nil)
+            self.bridge?.viewController?.present(self.privacyViewController!, animated: false, completion: nil)
         }
     }
 
