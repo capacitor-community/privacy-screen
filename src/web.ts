@@ -1,6 +1,6 @@
 import { WebPlugin } from '@capacitor/core';
 
-import { PrivacyScreenPlugin } from './definitions';
+import type { PrivacyScreenPlugin } from './definitions';
 
 export class PrivacyScreenWeb extends WebPlugin implements PrivacyScreenPlugin {
   constructor() {

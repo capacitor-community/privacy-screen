@@ -9,6 +9,7 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 
 @CapacitorPlugin(name = "PrivacyScreen")
 public class PrivacyScreenPlugin extends Plugin {
+
     /**
      * Called when the plugin is first constructed in the bridge.
      * This method sets the FLAG_SECURE flag to treat the content of the window as secure,
