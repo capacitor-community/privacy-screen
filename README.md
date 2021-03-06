@@ -54,7 +54,6 @@ public class MainActivity extends BridgeActivity {
     this.init(
         savedInstanceState,
         new ArrayList<Class<? extends Plugin>>() {
-
           {
             // Additional plugins you've installed go here
             // Ex: add(TotallyAwesomePlugin.class);
@@ -88,6 +87,15 @@ const disable = async () => {
   await Plugins.PrivacyScreen.disable();
 };
 ```
+
+## API
+
+<docgen-index></docgen-index>
+
+<docgen-api>
+<!-- run docgen to generate docs from the source -->
+<!-- More info: https://github.com/ionic-team/capacitor-docgen -->
+</docgen-api>
 
 ## Changelog
 
