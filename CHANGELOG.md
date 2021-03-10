@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/capacitor-community/privacy-screen/compare/v1.1.2...v2.0.0) (2021-03-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update to Capacitor v3
+
+### Features
+
+* add Capacitor 3 support ([#24](https://github.com/capacitor-community/privacy-screen/issues/24)) ([c405ef4](https://github.com/capacitor-community/privacy-screen/commit/c405ef4e726ac46f2c18263c703676586274aacc))
+
 ### [1.1.2](https://github.com/capacitor-community/privacy-screen/compare/v1.1.1...v1.1.2) (2021-03-06)
 
 
