@@ -2,15 +2,13 @@ package com.getcapacitor.plugin.privacyscreen;
 
 import android.view.Window;
 import android.view.WindowManager;
-import androidx.appcompat.app.AppCompatActivity;
-import com.getcapacitor.JSObject;
-import com.getcapacitor.NativePlugin;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
+import com.getcapacitor.annotation.CapacitorPlugin;
 
-@NativePlugin
-public class PrivacyScreen extends Plugin {
+@CapacitorPlugin(name = "PrivacyScreen")
+public class PrivacyScreenPlugin extends Plugin {
 
     /**
      * Called when the plugin is first constructed in the bridge.

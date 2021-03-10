@@ -32,8 +32,17 @@ On **iOS**, this plugin hides the webview window when the app is no longer activ
 
 ## Installation
 
+### Capacitor 3.x
+
 ```
 npm install @capacitor-community/privacy-screen
+npx cap sync
+```
+
+### Capacitor 2.x
+
+```
+npm install @capacitor-community/privacy-screen@1.1.2
 npx cap sync
 ```
 
@@ -54,7 +63,6 @@ public class MainActivity extends BridgeActivity {
     this.init(
         savedInstanceState,
         new ArrayList<Class<? extends Plugin>>() {
-
           {
             // Additional plugins you've installed go here
             // Ex: add(TotallyAwesomePlugin.class);
@@ -64,6 +72,7 @@ public class MainActivity extends BridgeActivity {
       );
   }
 }
+
 ```
 
 ## Configuration
@@ -88,6 +97,49 @@ const disable = async () => {
   await Plugins.PrivacyScreen.disable();
 };
 ```
+
+## API
+
+<docgen-index>
+
+* [`enable()`](#enable)
+* [`disable()`](#disable)
+
+</docgen-index>
+
+<docgen-api>
+<!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
+
+### enable()
+
+```typescript
+enable() => Promise<void>
+```
+
+Enables the privacy screen protection.
+
+Only available for Android and iOS.
+
+**Since:** 1.1.0
+
+--------------------
+
+
+### disable()
+
+```typescript
+disable() => Promise<void>
+```
+
+Disables the privacy screen protection.
+
+Only available for Android and iOS.
+
+**Since:** 1.1.0
+
+--------------------
+
+</docgen-api>
 
 ## Changelog
 

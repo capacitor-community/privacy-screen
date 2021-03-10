@@ -5,8 +5,8 @@ import Capacitor
  * Please read the Capacitor iOS Plugin Development Guide
  * here: https://capacitorjs.com/docs/plugins/ios
  */
-@objc(PrivacyScreen)
-public class PrivacyScreen: CAPPlugin {
+@objc(PrivacyScreenPlugin)
+public class PrivacyScreenPlugin: CAPPlugin {
     private var isEnabled = true
     private var privacyViewController: UIViewController?
     
@@ -39,7 +39,7 @@ public class PrivacyScreen: CAPPlugin {
         self.privacyViewController!.view.backgroundColor = UIColor.gray;
         self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
         DispatchQueue.main.async {
-            self.bridge.viewController.present(self.privacyViewController!, animated: false, completion: nil)
+            self.bridge?.viewController?.present(self.privacyViewController!, animated: false, completion: nil)
         }
     }
 
