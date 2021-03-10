@@ -35,14 +35,14 @@ On **iOS**, this plugin hides the webview window when the app is no longer activ
 ### Capacitor 3.x
 
 ```
-npm install @capacitor-community/privacy-screen@next
+npm install @capacitor-community/privacy-screen
 npx cap sync
 ```
 
 ### Capacitor 2.x
 
 ```
-npm install @capacitor-community/privacy-screen
+npm install @capacitor-community/privacy-screen@1.1.2
 npx cap sync
 ```
 
