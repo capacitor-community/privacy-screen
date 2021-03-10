@@ -81,20 +81,18 @@ No configuration required for this plugin.
 
 ## Usage
 
-The plugin only needs to be installed.
-The protection is enabled by default.
+The plugin only needs to be installed. The protection is enabled by default.  
 However, you have the option to enable/disable the protection:
 
 ```js
-import { Plugins } from '@capacitor/core';
-import '@capacitor-community/privacy-screen';
+import { PrivacyScreen } from '@capacitor-community/privacy-screen';
 
 const enable = async () => {
-  await Plugins.PrivacyScreen.enable();
+  await PrivacyScreen.enable();
 };
 
 const disable = async () => {
-  await Plugins.PrivacyScreen.disable();
+  await PrivacyScreen.disable();
 };
 ```
 
