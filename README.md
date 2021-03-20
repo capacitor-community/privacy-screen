@@ -79,6 +79,10 @@ public class MainActivity extends BridgeActivity {
 
 No configuration required for this plugin.
 
+## Demo
+
+A working example can be found here: [robingenz/capacitor-plugin-demo](https://github.com/robingenz/capacitor-plugin-demo)
+
 ## Usage
 
 The plugin only needs to be installed. The protection is enabled by default.  
@@ -100,8 +104,8 @@ const disable = async () => {
 
 <docgen-index>
 
-* [`enable()`](#enable)
-* [`disable()`](#disable)
+- [`enable()`](#enable)
+- [`disable()`](#disable)
 
 </docgen-index>
 
@@ -120,8 +124,7 @@ Only available for Android and iOS.
 
 **Since:** 1.1.0
 
---------------------
-
+---
 
 ### disable()
 
@@ -135,7 +138,7 @@ Only available for Android and iOS.
 
 **Since:** 1.1.0
 
---------------------
+---
 
 </docgen-api>
 
