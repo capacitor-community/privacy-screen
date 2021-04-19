@@ -32,47 +32,9 @@ On **iOS**, this plugin hides the webview window when the app is no longer activ
 
 ## Installation
 
-### Capacitor 3.x
-
 ```
 npm install @capacitor-community/privacy-screen
 npx cap sync
-```
-
-### Capacitor 2.x
-
-```
-npm install @capacitor-community/privacy-screen@1.1.2
-npx cap sync
-```
-
-On **iOS**, no further steps are needed.
-
-On **Android**, register the plugin in your main activity:
-
-```java
-import com.getcapacitor.plugin.privacyscreen.PrivacyScreen;
-
-public class MainActivity extends BridgeActivity {
-
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-
-    // Initializes the Bridge
-    this.init(
-        savedInstanceState,
-        new ArrayList<Class<? extends Plugin>>() {
-          {
-            // Additional plugins you've installed go here
-            // Ex: add(TotallyAwesomePlugin.class);
-            add(PrivacyScreen.class);
-          }
-        }
-      );
-  }
-}
-
 ```
 
 ## Configuration
