@@ -9,15 +9,14 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 
 @CapacitorPlugin(name = "PrivacyScreen")
 public class PrivacyScreenPlugin extends Plugin {
+    private PrivacyScreenConfig config;
 
-    /**
-     * Called when the plugin is first constructed in the bridge.
-     * This method sets the FLAG_SECURE flag to treat the content of the window as secure,
-     * preventing it from appearing in screenshots or from being viewed on non-secure displays.
-     * @see <a href="https://developer.android.com/reference/android/view/WindowManager.LayoutParams#FLAG_SECURE">Android Developers</a>
-     */
     public void load() {
-        addFlags();
+        config = getPrivacyScreenConfig();
+        boolean isEnabled = config.isEnabled();
+        if (isEnabled) {
+            addFlags();
+        }
     }
 
     @PluginMethod
@@ -56,5 +55,14 @@ public class PrivacyScreenPlugin extends Plugin {
     private void clearFlags() {
         Window window = getActivity().getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+    }
+
+    private PrivacyScreenConfig getPrivacyScreenConfig() {
+        PrivacyScreenConfig config = new PrivacyScreenConfig();
+
+        Boolean enable = getConfig().getBoolean("enable", config.isEnabled());
+        config.setEnable(enable);
+
+        return config;
     }
 }
