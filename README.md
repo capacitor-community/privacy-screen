@@ -51,7 +51,7 @@ These config values are available:
 }
 ```
 
-If you do not want the plugin to be enabled on app launch, set `enable` to `false`.
+If you do not want the plugin to be enabled by default, set `enable` to `false`.
 
 ## Demo
 
