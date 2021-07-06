@@ -1,6 +1,7 @@
 package com.getcapacitor.plugin.privacyscreen;
 
 public class PrivacyScreenConfig {
+
     private boolean enable = true;
 
     public boolean isEnabled() {

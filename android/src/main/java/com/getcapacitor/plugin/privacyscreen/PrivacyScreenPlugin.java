@@ -9,6 +9,7 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 
 @CapacitorPlugin(name = "PrivacyScreen")
 public class PrivacyScreenPlugin extends Plugin {
+
     private PrivacyScreenConfig config;
 
     public void load() {

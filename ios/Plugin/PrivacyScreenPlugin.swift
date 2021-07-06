@@ -9,7 +9,7 @@ import Capacitor
 public class PrivacyScreenPlugin: CAPPlugin {
     private var isEnabled = true
     private var privacyViewController: UIViewController?
-    
+
     override public func load() {
         self.isEnabled = privacyScreenConfig().enable
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDidBecomeActive),
@@ -21,12 +21,12 @@ public class PrivacyScreenPlugin: CAPPlugin {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     @objc func enable(_ call: CAPPluginCall) {
         self.isEnabled = true
         call.resolve()
     }
-    
+
     @objc func disable(_ call: CAPPluginCall) {
         self.isEnabled = false
         call.resolve()
@@ -37,7 +37,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
             return
         }
         self.privacyViewController = UIViewController()
-        self.privacyViewController!.view.backgroundColor = UIColor.gray;
+        self.privacyViewController!.view.backgroundColor = UIColor.gray
         self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
         DispatchQueue.main.async {
             self.bridge?.viewController?.present(self.privacyViewController!, animated: false, completion: nil)
@@ -49,10 +49,10 @@ public class PrivacyScreenPlugin: CAPPlugin {
             self.privacyViewController?.dismiss(animated: false, completion: nil)
         }
     }
-    
+
     private func privacyScreenConfig() -> PrivacyScreenConfig {
         var config = PrivacyScreenConfig()
-        
+
         if let enable = getConfigValue("enable") as? Bool {
             config.enable = enable
         }
