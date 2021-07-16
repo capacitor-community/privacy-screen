@@ -39,7 +39,19 @@ npx cap sync
 
 ## Configuration
 
-No configuration required for this plugin.
+These config values are available:
+
+```json
+{
+  "plugins": {
+    "PrivacyScreen": {
+      "enable": true
+    }
+  }
+}
+```
+
+If you do not want the plugin to be enabled by default, set `enable` to `false`.
 
 ## Demo
 
@@ -66,8 +78,8 @@ const disable = async () => {
 
 <docgen-index>
 
-- [`enable()`](#enable)
-- [`disable()`](#disable)
+* [`enable()`](#enable)
+* [`disable()`](#disable)
 
 </docgen-index>
 
@@ -86,7 +98,8 @@ Only available for Android and iOS.
 
 **Since:** 1.1.0
 
----
+--------------------
+
 
 ### disable()
 
@@ -100,7 +113,7 @@ Only available for Android and iOS.
 
 **Since:** 1.1.0
 
----
+--------------------
 
 </docgen-api>
 
