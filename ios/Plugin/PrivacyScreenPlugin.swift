@@ -44,7 +44,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
             blurEffectView.frame = self.privacyViewController!.view.bounds
             blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            self.privacyViewController!.view.addSubview(blurEffectView) //if you have more UIViews, use an insertSubview API to place it where needed
+            self.privacyViewController!.view.addSubview(blurEffectView)
         } else {
             self.privacyViewController!.view.backgroundColor = .gray
         }
