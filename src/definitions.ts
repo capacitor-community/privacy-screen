@@ -14,7 +14,7 @@ declare module '@capacitor/cli' {
        * @default true
        * @example true
        */
-       enable?: boolean;
+      enable?: boolean;
     };
   }
 }
