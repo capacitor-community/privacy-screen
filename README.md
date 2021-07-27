@@ -39,7 +39,18 @@ npx cap sync
 
 ## Configuration
 
+<docgen-config>
+<!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
+
 These config values are available:
+
+| Prop         | Type                 | Description                                                                                      | Default           |
+| ------------ | -------------------- | ------------------------------------------------------------------------------------------------ | ----------------- |
+| **`enable`** | <code>boolean</code> | Configure whether the plugin should be enabled from startup. Only available for Android and iOS. | <code>true</code> |
+
+### Examples
+
+In `capacitor.config.json`:
 
 ```json
 {
@@ -51,7 +62,25 @@ These config values are available:
 }
 ```
 
-If you do not want the plugin to be enabled by default, set `enable` to `false`.
+In `capacitor.config.ts`:
+
+```ts
+/// <reference types="@capacitor/privacy-screen" />
+
+import { CapacitorConfig } from '@capacitor/cli';
+
+const config: CapacitorConfig = {
+  plugins: {
+    PrivacyScreen: {
+      enable: true,
+    },
+  },
+};
+
+export default config;
+```
+
+</docgen-config>
 
 ## Demo
 

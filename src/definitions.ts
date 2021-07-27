@@ -1,3 +1,24 @@
+/// <reference types="@capacitor/cli" />
+
+declare module '@capacitor/cli' {
+  export interface PluginsConfig {
+    /**
+     * These config values are available:
+     */
+    PrivacyScreen?: {
+      /**
+       * Configure whether the plugin should be enabled from startup.
+       *
+       * Only available for Android and iOS.
+       *
+       * @default true
+       * @example true
+       */
+       enable?: boolean;
+    };
+  }
+}
+
 export interface PrivacyScreenPlugin {
   /**
    * Enables the privacy screen protection.
