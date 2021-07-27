@@ -3,7 +3,7 @@
 declare module '@capacitor/cli' {
   export interface PluginsConfig {
     /**
-     * These config values are available:
+     * These configuration values are available:
      */
     PrivacyScreen?: {
       /**
