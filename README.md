@@ -39,7 +39,19 @@ npx cap sync
 
 ## Configuration
 
-No configuration required for this plugin.
+These config values are available:
+
+```json
+{
+  "plugins": {
+    "PrivacyScreen": {
+      "enable": true
+    }
+  }
+}
+```
+
+If you do not want the plugin to be enabled by default, set `enable` to `false`.
 
 ## Demo
 
