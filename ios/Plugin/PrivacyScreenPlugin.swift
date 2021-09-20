@@ -88,8 +88,8 @@ public class PrivacyScreenPlugin: CAPPlugin {
         }
 
         self.alert = UIAlertController(title: "Attention",
-                                      message: "Screenshots may contain sensitive data. Do not keep them on your phone!",
-                                      preferredStyle: .alert)
+                                              message: "Screenshots may contain sensitive data. Do not keep them on your phone!",
+                                              preferredStyle: .alert)
         self.alert?.addAction(UIAlertAction(title: "OK", style: .default))
         DispatchQueue.main.async {
             self.bridge?.viewController?.present(self.alert!, animated: false, completion: nil)
