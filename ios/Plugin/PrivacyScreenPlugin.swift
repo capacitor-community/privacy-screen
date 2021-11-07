@@ -12,6 +12,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
     private var alert: UIAlertController?
 
     override public func load() {
+        self.isEnabled = privacyScreenConfig().enable
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDidBecomeActive),
                                                name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppWillResignActive),
@@ -94,5 +95,14 @@ public class PrivacyScreenPlugin: CAPPlugin {
         DispatchQueue.main.async {
             self.bridge?.viewController?.present(self.alert!, animated: false, completion: nil)
         }
+    }
+
+    private func privacyScreenConfig() -> PrivacyScreenConfig {
+        var config = PrivacyScreenConfig()
+
+        if let enable = getConfigValue("enable") as? Bool {
+            config.enable = enable
+        }
+        return config
     }
 }
