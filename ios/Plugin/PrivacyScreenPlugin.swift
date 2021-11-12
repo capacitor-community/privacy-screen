@@ -9,7 +9,6 @@ import Capacitor
 public class PrivacyScreenPlugin: CAPPlugin {
     private var isEnabled = true
     private var privacyViewController: UIViewController?
-    private var alert: UIAlertController?
 
     override public func load() {
         self.isEnabled = privacyScreenConfig().enable
@@ -19,8 +18,6 @@ public class PrivacyScreenPlugin: CAPPlugin {
                                                name: UIApplication.willResignActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didDetectRecording),
                                                name: UIScreen.capturedDidChangeNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didDetectScreenshot),
-                                               name: UIApplication.userDidTakeScreenshotNotification, object: nil)
     }
 
     deinit {
@@ -38,27 +35,16 @@ public class PrivacyScreenPlugin: CAPPlugin {
     }
 
     @objc func onAppWillResignActive() {
-        guard self.isEnabled else {
-            return
+            guard self.isEnabled else {
+                return
+            }
+            self.privacyViewController = UIViewController()
+            self.privacyViewController!.view.backgroundColor = UIColor.gray
+            self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+            DispatchQueue.main.async {
+                self.bridge?.viewController?.present(self.privacyViewController!, animated: false, completion: nil)
+            }
         }
-
-        self.privacyViewController = UIViewController()
-        self.privacyViewController!.view.backgroundColor = .clear;
-        self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-        if !UIAccessibility.isReduceTransparencyEnabled {
-            let blurEffect = UIBlurEffect(style: .dark)
-            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            blurEffectView.frame = self.privacyViewController!.view.bounds
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            self.privacyViewController!.view.addSubview(blurEffectView)
-        } else {
-            self.privacyViewController!.view.backgroundColor = .gray
-        }
-
-        DispatchQueue.main.async {
-            self.bridge?.viewController?.present(self.privacyViewController!, animated: false, completion: nil)
-        }
-    }
 
     @objc func onAppDidBecomeActive() {
         DispatchQueue.main.async {
@@ -81,20 +67,6 @@ public class PrivacyScreenPlugin: CAPPlugin {
             }
         }
 
-    }
-
-    @objc private func didDetectScreenshot() {
-        guard self.isEnabled else {
-            return
-        }
-
-        self.alert = UIAlertController(title: "Attention",
-                                              message: "Screenshots may contain sensitive data. Do not keep them on your phone!",
-                                              preferredStyle: .alert)
-        self.alert?.addAction(UIAlertAction(title: "OK", style: .default))
-        DispatchQueue.main.async {
-            self.bridge?.viewController?.present(self.alert!, animated: false, completion: nil)
-        }
     }
 
     private func privacyScreenConfig() -> PrivacyScreenConfig {

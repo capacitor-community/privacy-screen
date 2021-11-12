@@ -42,7 +42,7 @@ npx cap sync
 <docgen-config>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-These config values are available:
+These configuration values are available:
 
 | Prop         | Type                 | Description                                                                                      | Default           |
 | ------------ | -------------------- | ------------------------------------------------------------------------------------------------ | ----------------- |
