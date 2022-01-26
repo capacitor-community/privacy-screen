@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/capacitor-community/privacy-screen/compare/v2.1.0...v2.1.1) (2022-01-26)
+
+
+### Bug Fixes
+
+* inline source code in esm map files ([dc1183a](https://github.com/capacitor-community/privacy-screen/commit/dc1183a28ba3ca7e815f5399ba336c3aeedf3468))
+
 ## [2.1.0](https://github.com/capacitor-community/privacy-screen/compare/v2.0.0...v2.1.0) (2021-07-16)
 
 
