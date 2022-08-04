@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/capacitor-community/privacy-screen/compare/v2.1.1...v3.0.0) (2022-08-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* This plugin now only supports Capacitor 4.
+
+### Features
+
+* update to Capacitor 4 ([#44](https://github.com/capacitor-community/privacy-screen/issues/44)) ([029bcde](https://github.com/capacitor-community/privacy-screen/commit/029bcdec9d7ed70a9b3da32e2753051b62701713))
+
 ### [2.1.1](https://github.com/capacitor-community/privacy-screen/compare/v2.1.0...v2.1.1) (2022-01-26)
 
 
