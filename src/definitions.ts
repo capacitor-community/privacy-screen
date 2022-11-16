@@ -15,6 +15,21 @@ declare module '@capacitor/cli' {
        * @example true
        */
       enable?: boolean;
+
+      /**
+       * ios specific configuration
+       */
+      ios?: {
+        /**
+         * Configure the color of the privacy screen.
+         *
+         * The color should be provided as a string using HEX8 code (including hash symbol).
+         * If no color code is provided `UIColor.gray` will be used.
+         *
+         * @example "#27d17fff"
+         */
+        backgroundColorHex8?: string;
+      }
     };
   }
 }
