@@ -16,6 +16,8 @@ public class PrivacyScreenPlugin: CAPPlugin {
                                                name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppWillResignActive),
                                                name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didDetectCapturing),
+                                                  name: UIScreen.capturedDidChangeNotification, object: nil)
     }
 
     deinit {
@@ -48,6 +50,23 @@ public class PrivacyScreenPlugin: CAPPlugin {
         DispatchQueue.main.async {
             self.privacyViewController?.dismiss(animated: false, completion: nil)
         }
+    }
+
+    @objc private func didDetectCapturing() {
+        guard self.isEnabled else {
+            return
+        }
+
+        if #available(iOS 11.0, *) {
+            if UIScreen.main.isCaptured {
+                DispatchQueue.main.async {
+                    self.bridge?.viewController?.present(self.privacyViewController!, animated: false, completion: nil)
+                }
+            } else {
+                self.privacyViewController?.dismiss(animated: false, completion: nil)
+            }
+        }
+
     }
 
     private func privacyScreenConfig() -> PrivacyScreenConfig {
