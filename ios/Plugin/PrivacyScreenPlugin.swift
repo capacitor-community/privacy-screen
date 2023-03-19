@@ -52,10 +52,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
 
     private func privacyScreenConfig() -> PrivacyScreenConfig {
         var config = PrivacyScreenConfig()
-
-        if let enable = getConfigValue("enable") as? Bool {
-            config.enable = enable
-        }
+        config.enable = getConfig().getBoolean("enable", config.enable)
         return config
     }
 }
