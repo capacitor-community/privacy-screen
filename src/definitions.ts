@@ -1,6 +1,6 @@
 /// <reference types="@capacitor/cli" />
 
-import { PluginListenerHandle } from '@capacitor/core';
+import type { PluginListenerHandle } from '@capacitor/core';
 
 declare module '@capacitor/cli' {
   export interface PluginsConfig {
