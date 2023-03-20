@@ -105,9 +105,9 @@ const disable = async () => {
 const detect = async () => {
   await PrivacyScreen.addListener('capturingDetected', async (capturing) => {
     if (capturing.capturing) {
-      await PrivacyScreen.present();
+      await PrivacyScreen.show();
     } else {
-      await PrivacyScreen.dismiss();
+      await PrivacyScreen.hide();
     }
   });
 }
@@ -119,8 +119,8 @@ const detect = async () => {
 
 * [`enable()`](#enable)
 * [`disable()`](#disable)
-* [`present()`](#present)
-* [`dismiss()`](#dismiss)
+* [`show()`](#show)
+* [`hide()`](#hide)
 * [`addListener('capturingDetected', ...)`](#addlistenercapturingdetected)
 * [`removeAllListeners()`](#removealllisteners)
 * [Interfaces](#interfaces)
@@ -160,10 +160,10 @@ Only available for Android and iOS.
 --------------------
 
 
-### present()
+### show()
 
 ```typescript
-present() => Promise<void>
+show() => Promise<void>
 ```
 
 Present the privacy screen protection.
@@ -175,10 +175,10 @@ Only available for iOS.
 --------------------
 
 
-### dismiss()
+### hide()
 
 ```typescript
-dismiss() => Promise<void>
+hide() => Promise<void>
 ```
 
 Dismiss the privacy screen protection.

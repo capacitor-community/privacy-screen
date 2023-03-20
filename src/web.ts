@@ -11,11 +11,11 @@ export class PrivacyScreenWeb extends WebPlugin implements PrivacyScreenPlugin {
     throw this.unimplemented('Not implemented on web.');
   }
 
-  async present(): Promise<void> {
+  async show(): Promise<void> {
     throw this.unimplemented('Not implemented on web.');
   }
 
-  async dismiss(): Promise<void> {
+  async hide(): Promise<void> {
     throw this.unimplemented('Not implemented on web.');
   }
 }

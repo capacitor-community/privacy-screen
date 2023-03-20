@@ -56,7 +56,7 @@ export interface PrivacyScreenPlugin {
    *
    * @since 3.0.2
    */
-  present(): Promise<void>;
+  show(): Promise<void>;
 
   /**
    * Dismiss the privacy screen protection.
@@ -65,7 +65,7 @@ export interface PrivacyScreenPlugin {
    *
    * @since 3.0.2
    */
-  dismiss(): Promise<void>;
+  hide(): Promise<void>;
 
   /**
    * Listen for screen captures.

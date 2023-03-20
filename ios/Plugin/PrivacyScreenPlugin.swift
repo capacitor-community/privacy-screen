@@ -38,7 +38,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
         call.resolve()
     }
 
-    @objc func present(_ call: CAPPluginCall) {
+    @objc func show(_ call: CAPPluginCall) {
         DispatchQueue.main.async {
             if self.privacyViewController?.presentingViewController == nil {
                 self.bridge?.viewController?.present(self.privacyViewController!, animated: false, completion: nil)
@@ -47,7 +47,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
         }
     }
 
-    @objc func dismiss(_ call: CAPPluginCall) {
+    @objc func hide(_ call: CAPPluginCall) {
         DispatchQueue.main.async {
             if self.privacyViewController?.presentingViewController != nil {
                 self.privacyViewController?.dismiss(animated: false, completion: nil)
