@@ -101,6 +101,16 @@ const enable = async () => {
 const disable = async () => {
   await PrivacyScreen.disable();
 };
+
+const detect = async () => {
+  await PrivacyScreen.addListener('capturingDetected', async (capturing) => {
+    if (capturing.capturing) {
+      await PrivacyScreen.present();
+    } else {
+      await PrivacyScreen.dismiss();
+    }
+  });
+}
 ```
 
 ## API
@@ -109,6 +119,11 @@ const disable = async () => {
 
 * [`enable()`](#enable)
 * [`disable()`](#disable)
+* [`present()`](#present)
+* [`dismiss()`](#dismiss)
+* [`addListener('capturingDetected', ...)`](#addlistenercapturingdetected)
+* [`removeAllListeners()`](#removealllisteners)
+* [Interfaces](#interfaces)
 
 </docgen-index>
 
@@ -143,6 +158,88 @@ Only available for Android and iOS.
 **Since:** 1.1.0
 
 --------------------
+
+
+### present()
+
+```typescript
+present() => Promise<void>
+```
+
+Present the privacy screen protection.
+
+Only available for iOS.
+
+**Since:** 3.0.2
+
+--------------------
+
+
+### dismiss()
+
+```typescript
+dismiss() => Promise<void>
+```
+
+Dismiss the privacy screen protection.
+
+Only available for iOS.
+
+**Since:** 3.0.2
+
+--------------------
+
+
+### addListener('capturingDetected', ...)
+
+```typescript
+addListener(eventName: 'capturingDetected', listenerFunc: (result: CapturingResult) => void) => Promise<PluginListenerHandle> & PluginListenerHandle
+```
+
+Listen for screen captures.
+
+Only available on iOS.
+
+| Param              | Type                                                                             |
+| ------------------ | -------------------------------------------------------------------------------- |
+| **`eventName`**    | <code>'capturingDetected'</code>                                                 |
+| **`listenerFunc`** | <code>(result: <a href="#capturingresult">CapturingResult</a>) =&gt; void</code> |
+
+**Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt; & <a href="#pluginlistenerhandle">PluginListenerHandle</a></code>
+
+**Since:** 3.0.2
+
+--------------------
+
+
+### removeAllListeners()
+
+```typescript
+removeAllListeners() => Promise<void>
+```
+
+Remove all listeners for this plugin.
+
+**Since:** 3.0.2
+
+--------------------
+
+
+### Interfaces
+
+
+#### PluginListenerHandle
+
+| Prop         | Type                                      |
+| ------------ | ----------------------------------------- |
+| **`remove`** | <code>() =&gt; Promise&lt;void&gt;</code> |
+
+
+#### CapturingResult
+
+| Prop            | Type                 | Description                                           | Since |
+| --------------- | -------------------- | ----------------------------------------------------- | ----- |
+| **`capturing`** | <code>boolean</code> | Returns the state of capturing Only available on iOS. | 1.0.0 |
 
 </docgen-api>
 
