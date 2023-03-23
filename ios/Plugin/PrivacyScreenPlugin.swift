@@ -65,9 +65,9 @@ public class PrivacyScreenPlugin: CAPPlugin {
 
         if #available(iOS 11.0, *) {
             if(UIScreen.main.isCaptured){
-                self.notifyListeners("screenRecordingStarted")
+                self.notifyListeners("screenRecordingStarted", data: [:])
             } else {
-                self.notifyListeners("screenRecordingStopped")
+                self.notifyListeners("screenRecordingStopped", data: [:])
             }
         }
     }
