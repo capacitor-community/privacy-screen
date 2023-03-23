@@ -21,15 +21,6 @@ declare module '@capacitor/cli' {
   }
 }
 
-export interface CapturingResult {
-  /**
-   * Returns the state of capturing
-   * Only available on iOS.
-   * @since 1.0.0
-   */
-  capturing: boolean;
-}
-
 export interface PrivacyScreenPlugin {
   /**
    * Enables the privacy screen protection.
@@ -50,33 +41,27 @@ export interface PrivacyScreenPlugin {
   disable(): Promise<void>;
 
   /**
-   * Present the privacy screen protection.
+   * Listen for screen started recording.
    *
-   * Only available for iOS.
-   *
-   * @since 3.0.2
-   */
-  show(): Promise<void>;
-
-  /**
-   * Dismiss the privacy screen protection.
-   *
-   * Only available for iOS.
-   *
-   * @since 3.0.2
-   */
-  hide(): Promise<void>;
-
-  /**
-   * Listen for screen captures.
-   *
-   * Only available on iOS.
+   * Only available on iOS for now.
    *
    * @since 3.0.2
    */
   addListener(
-    eventName: 'capturingDetected',
-    listenerFunc: (result: CapturingResult) => void,
+    eventName: 'screenRecordingStarted',
+    listenerFunc: () => void,
+  ): Promise<PluginListenerHandle> & PluginListenerHandle;
+
+  /**
+   * Listen for screen stopped recording.
+   *
+   * Only available on iOS for now.
+   *
+   * @since 3.0.2
+   */
+  addListener(
+    eventName: 'screenRecordingStopped',
+    listenerFunc: () => void,
   ): Promise<PluginListenerHandle> & PluginListenerHandle;
 
   /**

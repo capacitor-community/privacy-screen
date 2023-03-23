@@ -10,12 +10,12 @@ public class PrivacyScreenPlugin: CAPPlugin {
     private var isEnabled = true
     private var privacyViewController: UIViewController?
 
-    self.privacyViewController = UIViewController()
-    self.privacyViewController!.view.backgroundColor = UIColor.gray
-    self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-
     override public func load() {
         self.isEnabled = privacyScreenConfig().enable
+        self.privacyViewController = UIViewController()
+        self.privacyViewController!.view.backgroundColor = UIColor.gray
+        self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDidBecomeActive),
                                                name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppWillResignActive),
@@ -38,33 +38,13 @@ public class PrivacyScreenPlugin: CAPPlugin {
         call.resolve()
     }
 
-    @objc func show(_ call: CAPPluginCall) {
-        DispatchQueue.main.async {
-            if self.privacyViewController?.presentingViewController == nil {
-                self.bridge?.viewController?.present(self.privacyViewController!, animated: false, completion: nil)
-            }
-            call.resolve()
-        }
-    }
-
-    @objc func hide(_ call: CAPPluginCall) {
-        DispatchQueue.main.async {
-            if self.privacyViewController?.presentingViewController != nil {
-                self.privacyViewController?.dismiss(animated: false, completion: nil)
-            }
-            call.resolve()
-        }
-    }
-
     @objc func onAppWillResignActive() {
         guard self.isEnabled else {
             return
         }
 
         DispatchQueue.main.async {
-            if self.privacyViewController?.presentingViewController == nil {
-                self.bridge?.viewController?.present(self.privacyViewController!, animated: false, completion: nil)
-            }
+            self.bridge?.viewController?.present(self.privacyViewController!, animated: false, completion: nil)
         }
     }
 
@@ -74,16 +54,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
         }
 
         DispatchQueue.main.async {
-            if self.privacyViewController?.presentingViewController != nil {
-                if #available(iOS 11.0, *) {
-                    guard !UIScreen.main.isCaptured else {
-                        return
-                    }
-                    self.privacyViewController?.dismiss(animated: false, completion: nil)
-                } else{
-                    self.privacyViewController?.dismiss(animated: false, completion: nil)
-                }
-            }
+            self.privacyViewController?.dismiss(animated: false, completion: nil)
         }
     }
 
@@ -93,9 +64,12 @@ public class PrivacyScreenPlugin: CAPPlugin {
         }
 
         if #available(iOS 11.0, *) {
-            self.notifyListeners("capturingDetected", data: ["capturing": UIScreen.main.isCaptured])
+            if(UIScreen.main.isCaptured){
+                self.notifyListeners("screenRecordingStarted")
+            } else {
+                self.notifyListeners("screenRecordingStopped")
+            }
         }
-
     }
 
     private func privacyScreenConfig() -> PrivacyScreenConfig {

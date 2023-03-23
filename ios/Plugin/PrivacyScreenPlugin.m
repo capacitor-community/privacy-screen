@@ -6,6 +6,4 @@
 CAP_PLUGIN(PrivacyScreenPlugin, "PrivacyScreen",
            CAP_PLUGIN_METHOD(enable, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(disable, CAPPluginReturnPromise);
-           CAP_PLUGIN_METHOD(show, CAPPluginReturnPromise);
-           CAP_PLUGIN_METHOD(hide, CAPPluginReturnPromise);
 )
