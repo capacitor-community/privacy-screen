@@ -49,10 +49,6 @@ public class PrivacyScreenPlugin: CAPPlugin {
     }
 
     @objc func onAppDidBecomeActive() {
-        guard self.isEnabled else {
-            return
-        }
-
         DispatchQueue.main.async {
             self.privacyViewController?.dismiss(animated: false, completion: nil)
         }
@@ -65,9 +61,9 @@ public class PrivacyScreenPlugin: CAPPlugin {
 
         if #available(iOS 11.0, *) {
             if(UIScreen.main.isCaptured){
-                self.notifyListeners("screenRecordingStarted", data: [:])
+                self.notifyListeners("screenRecordingStarted", data: nil)
             } else {
-                self.notifyListeners("screenRecordingStopped", data: [:])
+                self.notifyListeners("screenRecordingStopped", data: nil)
             }
         }
     }

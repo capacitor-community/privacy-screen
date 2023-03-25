@@ -101,16 +101,6 @@ const enable = async () => {
 const disable = async () => {
   await PrivacyScreen.disable();
 };
-
-const detect = async () => {
-  await PrivacyScreen.addListener('capturingDetected', async (capturing) => {
-    if (capturing.capturing) {
-      await PrivacyScreen.show();
-    } else {
-      await PrivacyScreen.hide();
-    }
-  });
-}
 ```
 
 ## API
@@ -119,9 +109,8 @@ const detect = async () => {
 
 * [`enable()`](#enable)
 * [`disable()`](#disable)
-* [`show()`](#show)
-* [`hide()`](#hide)
-* [`addListener('capturingDetected', ...)`](#addlistenercapturingdetected)
+* [`addListener('screenRecordingStarted', ...)`](#addlistenerscreenrecordingstarted)
+* [`addListener('screenRecordingStopped', ...)`](#addlistenerscreenrecordingstopped)
 * [`removeAllListeners()`](#removealllisteners)
 * [Interfaces](#interfaces)
 
@@ -160,50 +149,42 @@ Only available for Android and iOS.
 --------------------
 
 
-### show()
+### addListener('screenRecordingStarted', ...)
 
 ```typescript
-show() => Promise<void>
+addListener(eventName: 'screenRecordingStarted', listenerFunc: () => void) => Promise<PluginListenerHandle> & PluginListenerHandle
 ```
 
-Present the privacy screen protection.
+Listen for screen started recording.
 
-Only available for iOS.
+Only available on iOS for now.
+
+| Param              | Type                                  |
+| ------------------ | ------------------------------------- |
+| **`eventName`**    | <code>'screenRecordingStarted'</code> |
+| **`listenerFunc`** | <code>() =&gt; void</code>            |
+
+**Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt; & <a href="#pluginlistenerhandle">PluginListenerHandle</a></code>
 
 **Since:** 3.0.2
 
 --------------------
 
 
-### hide()
+### addListener('screenRecordingStopped', ...)
 
 ```typescript
-hide() => Promise<void>
+addListener(eventName: 'screenRecordingStopped', listenerFunc: () => void) => Promise<PluginListenerHandle> & PluginListenerHandle
 ```
 
-Dismiss the privacy screen protection.
+Listen for screen stopped recording.
 
-Only available for iOS.
+Only available on iOS for now.
 
-**Since:** 3.0.2
-
---------------------
-
-
-### addListener('capturingDetected', ...)
-
-```typescript
-addListener(eventName: 'capturingDetected', listenerFunc: (result: CapturingResult) => void) => Promise<PluginListenerHandle> & PluginListenerHandle
-```
-
-Listen for screen captures.
-
-Only available on iOS.
-
-| Param              | Type                                                                             |
-| ------------------ | -------------------------------------------------------------------------------- |
-| **`eventName`**    | <code>'capturingDetected'</code>                                                 |
-| **`listenerFunc`** | <code>(result: <a href="#capturingresult">CapturingResult</a>) =&gt; void</code> |
+| Param              | Type                                  |
+| ------------------ | ------------------------------------- |
+| **`eventName`**    | <code>'screenRecordingStopped'</code> |
+| **`listenerFunc`** | <code>() =&gt; void</code>            |
 
 **Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt; & <a href="#pluginlistenerhandle">PluginListenerHandle</a></code>
 
@@ -233,13 +214,6 @@ Remove all listeners for this plugin.
 | Prop         | Type                                      |
 | ------------ | ----------------------------------------- |
 | **`remove`** | <code>() =&gt; Promise&lt;void&gt;</code> |
-
-
-#### CapturingResult
-
-| Prop            | Type                 | Description                                           | Since |
-| --------------- | -------------------- | ----------------------------------------------------- | ----- |
-| **`capturing`** | <code>boolean</code> | Returns the state of capturing Only available on iOS. | 1.0.0 |
 
 </docgen-api>
 
