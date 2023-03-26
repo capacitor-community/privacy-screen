@@ -41,7 +41,7 @@ export interface PrivacyScreenPlugin {
   disable(): Promise<void>;
 
   /**
-   * Listen for screen started recording.
+   * Called when the screen recording is started.
    *
    * Only available on iOS for now.
    *
@@ -53,7 +53,7 @@ export interface PrivacyScreenPlugin {
   ): Promise<PluginListenerHandle> & PluginListenerHandle;
 
   /**
-   * Listen for screen stopped recording.
+   * Called when the screen recording is stopped.
    *
    * Only available on iOS for now.
    *
