@@ -15,7 +15,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
         self.privacyViewController = UIViewController()
         self.privacyViewController!.view.backgroundColor = UIColor.gray
         self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDidBecomeActive),
                                                name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppWillResignActive),
@@ -56,7 +56,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
 
     @objc private func onAppDetectCapturing() {
         if #available(iOS 11.0, *) {
-            if(UIScreen.main.isCaptured){
+            if UIScreen.main.isCaptured {
                 self.notifyListeners("screenRecordingStarted", data: nil)
             } else {
                 self.notifyListeners("screenRecordingStopped", data: nil)
