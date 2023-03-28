@@ -109,6 +109,10 @@ const disable = async () => {
 
 * [`enable()`](#enable)
 * [`disable()`](#disable)
+* [`addListener('screenRecordingStarted', ...)`](#addlistenerscreenrecordingstarted)
+* [`addListener('screenRecordingStopped', ...)`](#addlistenerscreenrecordingstopped)
+* [`removeAllListeners()`](#removealllisteners)
+* [Interfaces](#interfaces)
 
 </docgen-index>
 
@@ -143,6 +147,73 @@ Only available for Android and iOS.
 **Since:** 1.1.0
 
 --------------------
+
+
+### addListener('screenRecordingStarted', ...)
+
+```typescript
+addListener(eventName: 'screenRecordingStarted', listenerFunc: () => void) => Promise<PluginListenerHandle> & PluginListenerHandle
+```
+
+Listen for screen started recording.
+
+Only available on iOS for now.
+
+| Param              | Type                                  |
+| ------------------ | ------------------------------------- |
+| **`eventName`**    | <code>'screenRecordingStarted'</code> |
+| **`listenerFunc`** | <code>() =&gt; void</code>            |
+
+**Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt; & <a href="#pluginlistenerhandle">PluginListenerHandle</a></code>
+
+**Since:** 3.0.2
+
+--------------------
+
+
+### addListener('screenRecordingStopped', ...)
+
+```typescript
+addListener(eventName: 'screenRecordingStopped', listenerFunc: () => void) => Promise<PluginListenerHandle> & PluginListenerHandle
+```
+
+Listen for screen stopped recording.
+
+Only available on iOS for now.
+
+| Param              | Type                                  |
+| ------------------ | ------------------------------------- |
+| **`eventName`**    | <code>'screenRecordingStopped'</code> |
+| **`listenerFunc`** | <code>() =&gt; void</code>            |
+
+**Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt; & <a href="#pluginlistenerhandle">PluginListenerHandle</a></code>
+
+**Since:** 3.0.2
+
+--------------------
+
+
+### removeAllListeners()
+
+```typescript
+removeAllListeners() => Promise<void>
+```
+
+Remove all listeners for this plugin.
+
+**Since:** 3.0.2
+
+--------------------
+
+
+### Interfaces
+
+
+#### PluginListenerHandle
+
+| Prop         | Type                                      |
+| ------------ | ----------------------------------------- |
+| **`remove`** | <code>() =&gt; Promise&lt;void&gt;</code> |
 
 </docgen-api>
 

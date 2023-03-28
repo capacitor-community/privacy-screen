@@ -12,10 +12,16 @@ public class PrivacyScreenPlugin: CAPPlugin {
 
     override public func load() {
         self.isEnabled = privacyScreenConfig().enable
+        self.privacyViewController = UIViewController()
+        self.privacyViewController!.view.backgroundColor = UIColor.gray
+        self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDidBecomeActive),
                                                name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppWillResignActive),
                                                name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDetectCapturing),
+                                               name: UIScreen.capturedDidChangeNotification, object: nil)
     }
 
     deinit {
@@ -36,9 +42,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
         guard self.isEnabled else {
             return
         }
-        self.privacyViewController = UIViewController()
-        self.privacyViewController!.view.backgroundColor = UIColor.gray
-        self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+
         DispatchQueue.main.async {
             self.bridge?.viewController?.present(self.privacyViewController!, animated: false, completion: nil)
         }
@@ -47,6 +51,16 @@ public class PrivacyScreenPlugin: CAPPlugin {
     @objc func onAppDidBecomeActive() {
         DispatchQueue.main.async {
             self.privacyViewController?.dismiss(animated: false, completion: nil)
+        }
+    }
+
+    @objc private func onAppDetectCapturing() {
+        if #available(iOS 11.0, *) {
+            if(UIScreen.main.isCaptured){
+                self.notifyListeners("screenRecordingStarted", data: nil)
+            } else {
+                self.notifyListeners("screenRecordingStopped", data: nil)
+            }
         }
     }
 
