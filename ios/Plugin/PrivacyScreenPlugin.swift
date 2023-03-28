@@ -55,10 +55,6 @@ public class PrivacyScreenPlugin: CAPPlugin {
     }
 
     @objc private func onAppDetectCapturing() {
-        guard self.isEnabled else {
-            return
-        }
-
         if #available(iOS 11.0, *) {
             if(UIScreen.main.isCaptured){
                 self.notifyListeners("screenRecordingStarted", data: nil)
