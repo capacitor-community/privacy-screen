@@ -30,7 +30,6 @@ export interface PrivacyScreenPlugin {
    * @since 1.1.0
    */
   enable(): Promise<void>;
-
   /**
    * Disables the privacy screen protection.
    *
@@ -39,7 +38,6 @@ export interface PrivacyScreenPlugin {
    * @since 1.1.0
    */
   disable(): Promise<void>;
-
   /**
    * Called when the screen recording is started.
    *
@@ -51,7 +49,6 @@ export interface PrivacyScreenPlugin {
     eventName: 'screenRecordingStarted',
     listenerFunc: () => void,
   ): Promise<PluginListenerHandle> & PluginListenerHandle;
-
   /**
    * Called when the screen recording is stopped.
    *
@@ -63,7 +60,6 @@ export interface PrivacyScreenPlugin {
     eventName: 'screenRecordingStopped',
     listenerFunc: () => void,
   ): Promise<PluginListenerHandle> & PluginListenerHandle;
-
   /**
    * Remove all listeners for this plugin.
    *
