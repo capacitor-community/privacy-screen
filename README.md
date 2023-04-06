@@ -200,7 +200,7 @@ Only available on iOS for now.
 addListener(eventName: 'screenshotTaken', listenerFunc: () => void) => Promise<PluginListenerHandle> & PluginListenerHandle
 ```
 
-Listen for screenshot taken.
+Called when the screenshot is taken.
 
 Only available on iOS for now.
 
@@ -211,7 +211,7 @@ Only available on iOS for now.
 
 **Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt; & <a href="#pluginlistenerhandle">PluginListenerHandle</a></code>
 
-**Since:** 3.0.3
+**Since:** 3.1.1
 
 --------------------
 
