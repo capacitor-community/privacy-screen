@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/capacitor-community/privacy-screen/compare/v3.1.0...v3.2.0) (2023-04-06)
+
+
+### Features
+
+* add `screenshotTaken` listener ([#54](https://github.com/capacitor-community/privacy-screen/issues/54)) ([8fc812e](https://github.com/capacitor-community/privacy-screen/commit/8fc812e887ff0604b9f79c64d5ab370d917b6452))
+
+
+### Bug Fixes
+
+* **ios:** `removeAllListeners` method not found ([c547222](https://github.com/capacitor-community/privacy-screen/commit/c5472227db72cdea3928ee03d5c77190101206af))
+
 ### [3.1.0](https://github.com/capacitor-community/privacy-screen/compare/v3.0.1...v3.1.0) (2023-03-28)
 
 
