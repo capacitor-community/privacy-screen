@@ -111,6 +111,7 @@ const disable = async () => {
 * [`disable()`](#disable)
 * [`addListener('screenRecordingStarted', ...)`](#addlistenerscreenrecordingstarted)
 * [`addListener('screenRecordingStopped', ...)`](#addlistenerscreenrecordingstopped)
+* [`addListener('screenshotTaken', ...)`](#addlistenerscreenshottaken)
 * [`removeAllListeners()`](#removealllisteners)
 * [Interfaces](#interfaces)
 
@@ -189,6 +190,28 @@ Only available on iOS for now.
 **Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt; & <a href="#pluginlistenerhandle">PluginListenerHandle</a></code>
 
 **Since:** 3.0.2
+
+--------------------
+
+
+### addListener('screenshotTaken', ...)
+
+```typescript
+addListener(eventName: 'screenshotTaken', listenerFunc: () => void) => Promise<PluginListenerHandle> & PluginListenerHandle
+```
+
+Listen for screenshot taken.
+
+Only available on iOS for now.
+
+| Param              | Type                           |
+| ------------------ | ------------------------------ |
+| **`eventName`**    | <code>'screenshotTaken'</code> |
+| **`listenerFunc`** | <code>() =&gt; void</code>     |
+
+**Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt; & <a href="#pluginlistenerhandle">PluginListenerHandle</a></code>
+
+**Since:** 3.0.3
 
 --------------------
 
