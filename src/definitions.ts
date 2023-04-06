@@ -65,7 +65,7 @@ export interface PrivacyScreenPlugin {
    *
    * Only available on iOS for now.
    *
-   * @since 3.1.1
+   * @since 3.2.0
    */
   addListener(
     eventName: 'screenshotTaken',

@@ -211,7 +211,7 @@ Only available on iOS for now.
 
 **Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt; & <a href="#pluginlistenerhandle">PluginListenerHandle</a></code>
 
-**Since:** 3.1.1
+**Since:** 3.2.0
 
 --------------------
 
