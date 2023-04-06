@@ -61,6 +61,17 @@ export interface PrivacyScreenPlugin {
     listenerFunc: () => void,
   ): Promise<PluginListenerHandle> & PluginListenerHandle;
   /**
+   * Listen for screenshot taken.
+   *
+   * Only available on iOS for now.
+   *
+   * @since 3.0.3
+   */
+  addListener(
+    eventName: 'screenshotTaken',
+    listenerFunc: () => void,
+  ): Promise<PluginListenerHandle> & PluginListenerHandle;
+  /**
    * Remove all listeners for this plugin.
    *
    * @since 3.0.2
