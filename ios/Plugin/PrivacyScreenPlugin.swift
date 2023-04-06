@@ -67,7 +67,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
     }
 
     @objc private func onAppDetectScreenshot() {
-        self.notifyListeners("screenshotTaken", data: [:])
+        self.notifyListeners("screenshotTaken", data: nil)
     }
 
     private func privacyScreenConfig() -> PrivacyScreenConfig {
