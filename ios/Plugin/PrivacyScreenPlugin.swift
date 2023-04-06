@@ -23,7 +23,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDetectCapturing),
                                                name: UIScreen.capturedDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDetectScreenshot),
-                                                       name: UIApplication.userDidTakeScreenshotNotification, object: nil)
+                                               name: UIApplication.userDidTakeScreenshotNotification, object: nil)
     }
 
     deinit {
