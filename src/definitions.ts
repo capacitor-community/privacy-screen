@@ -61,11 +61,11 @@ export interface PrivacyScreenPlugin {
     listenerFunc: () => void,
   ): Promise<PluginListenerHandle> & PluginListenerHandle;
   /**
-   * Listen for screenshot taken.
+   * Called when the screenshot is taken.
    *
    * Only available on iOS for now.
    *
-   * @since 3.0.3
+   * @since 3.1.1
    */
   addListener(
     eventName: 'screenshotTaken',
