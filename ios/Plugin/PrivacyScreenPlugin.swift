@@ -22,6 +22,8 @@ public class PrivacyScreenPlugin: CAPPlugin {
                                                name: UIApplication.willResignActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDetectCapturing),
                                                name: UIScreen.capturedDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDetectScreenshot),
+                                               name: UIApplication.userDidTakeScreenshotNotification, object: nil)
     }
 
     deinit {
@@ -62,6 +64,10 @@ public class PrivacyScreenPlugin: CAPPlugin {
                 self.notifyListeners("screenRecordingStopped", data: nil)
             }
         }
+    }
+
+    @objc private func onAppDetectScreenshot() {
+        self.notifyListeners("screenshotTaken", data: nil)
     }
 
     private func privacyScreenConfig() -> PrivacyScreenConfig {
