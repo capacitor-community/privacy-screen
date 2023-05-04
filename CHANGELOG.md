@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/capacitor-community/privacy-screen/compare/v3.2.0...v4.0.0) (2023-05-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* This plugin now only supports Capacitor 5.
+
+### Features
+
+* update gradle to 8.0.2 and gradle plugin to 8.0.0 ([90582c7](https://github.com/capacitor-community/privacy-screen/commit/90582c7dd11513be226587daab804fe75ba3949c))
+* update to Capacitor 5 ([#55](https://github.com/capacitor-community/privacy-screen/issues/55)) ([f965405](https://github.com/capacitor-community/privacy-screen/commit/f96540542e5fa3f65a6fb46c605720b4db7b31ae))
+
 ## [3.2.0](https://github.com/capacitor-community/privacy-screen/compare/v3.1.0...v3.2.0) (2023-04-06)
 
 
