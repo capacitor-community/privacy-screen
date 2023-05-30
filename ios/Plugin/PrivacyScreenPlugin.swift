@@ -32,11 +32,17 @@ public class PrivacyScreenPlugin: CAPPlugin {
 
     @objc func enable(_ call: CAPPluginCall) {
         self.isEnabled = true
+        DispatchQueue.main.async {
+            self.bridge?.webView?.disableScreenshots()
+        }
         call.resolve()
     }
 
     @objc func disable(_ call: CAPPluginCall) {
         self.isEnabled = false
+        DispatchQueue.main.async {
+            self.bridge?.webView?.enableScreenshots()
+        }
         call.resolve()
     }
 
@@ -73,6 +79,11 @@ public class PrivacyScreenPlugin: CAPPlugin {
     private func privacyScreenConfig() -> PrivacyScreenConfig {
         var config = PrivacyScreenConfig()
         config.enable = getConfig().getBoolean("enable", config.enable)
+        if (config.enable) {
+            DispatchQueue.main.async {
+                self.bridge?.webView?.disableScreenshots()
+            }
+        }
         return config
     }
 }
