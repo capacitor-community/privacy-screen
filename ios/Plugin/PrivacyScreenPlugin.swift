@@ -79,7 +79,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
     private func privacyScreenConfig() -> PrivacyScreenConfig {
         var config = PrivacyScreenConfig()
         config.enable = getConfig().getBoolean("enable", config.enable)
-        if (config.enable) {
+        if config.enable {
             DispatchQueue.main.async {
                 self.bridge?.webView?.disableScreenshots()
             }
