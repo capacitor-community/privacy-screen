@@ -22,7 +22,11 @@ Capacitor Privacy Screen Plugin
 ⚡️ [Capacitor](https://capacitorjs.com/) plugin that protects your app from displaying a screenshot in [Recents screen](https://developer.android.com/guide/components/activities/recents)/[App Switcher](https://support.apple.com/en-us/HT202070).
 
 On **Android**, this plugin sets the [FLAG_SECURE](https://developer.android.com/reference/android/view/WindowManager.LayoutParams#FLAG_SECURE) flag to treat the content of the window as secure, preventing it from appearing in screenshots or from being viewed on non-secure displays.  
-On **iOS**, this plugin hides the webview window when the app is no longer active and loses focus ([UIApplicationWillResignActiveNotification](https://developer.apple.com/documentation/uikit/uiapplicationwillresignactivenotification)) so that a gray screen is shown instead.
+On **iOS**, this plugin hides the webview window when the app is no longer active and loses focus ([UIApplicationWillResignActiveNotification](https://developer.apple.com/documentation/uikit/uiapplicationwillresignactivenotification)) so that a gray screen is shown instead. It also prevents screenshots (a black screen will be captured).
+
+### Using the Camera Plugin
+
+Disabling screenshots can interfere with plugins that hide the WebView like the Camera plugin. To avoid issues call `disable` before using a plugin and then `enable` after you are finished.
 
 ## Maintainers
 
