@@ -98,7 +98,6 @@ public class PrivacyScreenPlugin: CAPPlugin {
 
 public extension WKWebView {
     func disableScreenshots() {
-        print("disable screenshot")
         let field = UITextField()
         field.isSecureTextEntry = true
         field.translatesAutoresizingMaskIntoConstraints = true
