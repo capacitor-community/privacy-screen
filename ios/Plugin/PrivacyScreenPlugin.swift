@@ -15,7 +15,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
         self.privacyViewController = UIViewController()
         self.privacyViewController!.view.backgroundColor = UIColor.gray
         self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDidBecomeActive),
                                                name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppWillResignActive),
@@ -24,6 +24,8 @@ public class PrivacyScreenPlugin: CAPPlugin {
                                                name: UIScreen.capturedDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDetectScreenshot),
                                                name: UIApplication.userDidTakeScreenshotNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onAppOrientationChanged),
+                                               name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
     }
 
     deinit {
@@ -65,8 +67,10 @@ public class PrivacyScreenPlugin: CAPPlugin {
     @objc private func onAppDetectCapturing() {
         if #available(iOS 11.0, *) {
             if UIScreen.main.isCaptured {
+                print("detect captured isCaptured")
                 self.notifyListeners("screenRecordingStarted", data: nil)
             } else {
+                print("detect captured else")
                 self.notifyListeners("screenRecordingStopped", data: nil)
             }
         }
@@ -74,6 +78,10 @@ public class PrivacyScreenPlugin: CAPPlugin {
 
     @objc private func onAppDetectScreenshot() {
         self.notifyListeners("screenshotTaken", data: nil)
+    }
+    
+    @objc private func onAppOrientationChanged() {
+        self.bridge?.webView?.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
     }
 
     private func privacyScreenConfig() -> PrivacyScreenConfig {
@@ -90,13 +98,14 @@ public class PrivacyScreenPlugin: CAPPlugin {
 
 public extension WKWebView {
     func disableScreenshots() {
+        print("disable screenshot")
         let field = UITextField()
         field.isSecureTextEntry = true
-        field.translatesAutoresizingMaskIntoConstraints = false
+        field.translatesAutoresizingMaskIntoConstraints = true
         self.addSubview(field)
-        field.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        field.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        self.layer.superlayer?.addSublayer(field.layer)
+        field.centerYAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        field.centerXAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+         self.layer.superlayer?.addSublayer(field.layer)
         field.layer.sublayers?.first?.addSublayer(self.layer)
     }
 
