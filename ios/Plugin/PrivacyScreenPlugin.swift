@@ -100,7 +100,7 @@ public extension WKWebView {
     func disableScreenshots() {
         let field = UITextField()
         field.isSecureTextEntry = true
-        field.translatesAutoresizingMaskIntoConstraints = true
+        field.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(field)
         field.centerYAnchor.constraint(equalTo: self.topAnchor).isActive = true
         field.centerXAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
