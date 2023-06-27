@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.1](https://github.com/capacitor-community/privacy-screen/compare/v4.1.0...v4.1.1) (2023-06-27)
+
+
+### Bug Fixes
+
+* **ios:** rescale web view on orientation change ([#62](https://github.com/capacitor-community/privacy-screen/issues/62)) ([55ee37a](https://github.com/capacitor-community/privacy-screen/commit/55ee37a74912a3d7a3b7197eed02611d62d6a77e))
+
 ## [4.1.0](https://github.com/capacitor-community/privacy-screen/compare/v4.0.0...v4.1.0) (2023-05-31)
 
 
