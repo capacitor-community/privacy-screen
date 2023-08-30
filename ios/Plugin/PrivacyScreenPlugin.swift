@@ -13,8 +13,20 @@ public class PrivacyScreenPlugin: CAPPlugin {
     override public func load() {
         self.isEnabled = privacyScreenConfig().enable
         self.privacyViewController = UIViewController()
-        self.privacyViewController!.view.backgroundColor = UIColor.gray
+        if(!privacyScreenConfig().useImageBackground){
+            self.privacyViewController!.view.backgroundColor = UIColor.gray
+        }else{
+            self.privacyViewController!.view.backgroundColor = UIColor.systemBackground
+            var imageView = UIImageView()
+            imageView.frame = CGRect(x: 0, y: 0, width: self.privacyViewController!.view.bounds.width  , height:  self.privacyViewController!.view.bounds.height)
+            imageView.contentMode = .center
+            imageView.clipsToBounds = true
+            let imageBackground = UIImage(named: privacyScreenConfig().imageName)
+            imageView.image = imageBackground
+            self.privacyViewController!.view.addSubview(imageView)
+        }
         self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDidBecomeActive),
                                                name: UIApplication.didBecomeActiveNotification, object: nil)
@@ -35,7 +47,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
     @objc func enable(_ call: CAPPluginCall) {
         self.isEnabled = true
         DispatchQueue.main.async {
-            self.bridge?.webView?.disableScreenshots()
+            self.bridge?.webView?.disableScreenshots(self.privacyScreenConfig().useImageBackground, self.privacyScreenConfig().imageName)
         }
         call.resolve()
     }
@@ -82,22 +94,42 @@ public class PrivacyScreenPlugin: CAPPlugin {
         self.bridge?.webView?.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
     }
 
-    private func privacyScreenConfig() -> PrivacyScreenConfig {
+    public func privacyScreenConfig() -> PrivacyScreenConfig {
         var config = PrivacyScreenConfig()
         config.enable = getConfig().getBoolean("enable", config.enable)
         if config.enable {
             DispatchQueue.main.async {
-                self.bridge?.webView?.disableScreenshots()
+                self.bridge?.webView?.disableScreenshots(config.useImageBackground, config.imageName)
             }
         }
+        config.useImageBackground = getConfig().getBoolean("useImageBackground", config.useImageBackground)
+        config.imageName = getConfig().getString("imageName", config.imageName)!
         return config
     }
 }
 
 public extension WKWebView {
-    func disableScreenshots() {
+    func disableScreenshots(_ useImageBackground: Bool, _ imageName: String) {
         let field = UITextField()
         field.isSecureTextEntry = true
+        if(useImageBackground){
+            let imageBackground = UIImage(named: imageName)
+            field.backgroundColor = UIColor.systemBackground
+
+            var backgroundView = UIView()
+            backgroundView.backgroundColor = UIColor.systemBackground
+            backgroundView.frame = self.bounds
+            field.addSubview(backgroundView)
+
+            var imageView = UIImageView()
+            imageView.frame = self.bounds
+            imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            imageView.contentMode = .center
+            imageView.clipsToBounds = true
+            imageView.image = imageBackground
+            field.addSubview(imageView)
+        }
+
         field.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(field)
         field.centerYAnchor.constraint(equalTo: self.topAnchor).isActive = true
