@@ -27,7 +27,6 @@ import UIKit
         } else {
             self.privacyViewController!.view.backgroundColor = .gray
         }
-        self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
 
         super.init()
         if config.enable {
