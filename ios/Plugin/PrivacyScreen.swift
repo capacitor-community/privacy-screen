@@ -5,24 +5,24 @@ import UIKit
 @objc public class PrivacyScreen: NSObject {
     private let plugin: PrivacyScreenPlugin
     private let config: PrivacyScreenConfig
-    
+
     private var isEnabled = true
     private var privacyViewController: UIViewController?
-    
+
     init(plugin: PrivacyScreenPlugin, config: PrivacyScreenConfig) {
         self.plugin = plugin
         self.config = config
-        
+
         self.privacyViewController = UIViewController()
         self.privacyViewController!.view.backgroundColor = UIColor.gray
         self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-        
+
         super.init()
         if config.enable {
             self.enable(completion: nil)
         }
     }
-    
+
     @objc public func enable(completion: (() -> Void)?) {
         self.isEnabled = true
         DispatchQueue.main.async {
@@ -30,7 +30,7 @@ import UIKit
             completion?()
         }
     }
-    
+
     @objc public func disable(completion: (() -> Void)?) {
         self.isEnabled = false
         DispatchQueue.main.async {
@@ -38,7 +38,7 @@ import UIKit
             completion?()
         }
     }
-    
+
     @objc public func handleWillResignActiveNotification() {
         guard self.isEnabled else {
             return
@@ -54,7 +54,7 @@ import UIKit
             self.privacyViewController?.dismiss(animated: false, completion: nil)
         }
     }
-    
+
     @objc public func handleDidChangeStatusBarOrientationNotification() {
         self.plugin.bridge?.webView?.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
     }

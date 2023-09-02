@@ -12,17 +12,17 @@ public class PrivacyScreenPlugin: CAPPlugin {
     override public func load() {
         let config = getPrivacyScreenConfig()
         self.implementation = PrivacyScreen(plugin: self, config: config)
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleDidBecomeActiveNotification),
-                                                       name: UIApplication.didBecomeActiveNotification, object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(self.handleWillResignActiveNotification),
-                                                       name: UIApplication.willResignActiveNotification, object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(self.handleCapturedDidChangeNotification),
-                                                       name: UIScreen.capturedDidChangeNotification, object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(self.handleUserDidTakeScreenshotNotification),
-                                                       name: UIApplication.userDidTakeScreenshotNotification, object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(self.handleDidChangeStatusBarOrientationNotification),
-                                                       name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
+                                               name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleWillResignActiveNotification),
+                                               name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleCapturedDidChangeNotification),
+                                               name: UIScreen.capturedDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleUserDidTakeScreenshotNotification),
+                                               name: UIApplication.userDidTakeScreenshotNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleDidChangeStatusBarOrientationNotification),
+                                               name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
     }
 
     deinit {
