@@ -1,5 +1,6 @@
 import Foundation
 import Capacitor
+import AVFoundation
 
 /**
  * Please read the Capacitor iOS Plugin Development Guide
@@ -23,6 +24,10 @@ public class PrivacyScreenPlugin: CAPPlugin {
                                                name: UIApplication.userDidTakeScreenshotNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleDidChangeStatusBarOrientationNotification),
                                                name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleCameraStartNotification),
+                                               name: .AVCaptureSessionDidStartRunning, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleCameraStopNotification),
+                                               name: .AVCaptureSessionDidStopRunning, object: nil)
     }
 
     deinit {
@@ -65,6 +70,14 @@ public class PrivacyScreenPlugin: CAPPlugin {
 
     @objc private func handleDidChangeStatusBarOrientationNotification() {
         implementation?.handleDidChangeStatusBarOrientationNotification()
+    }
+
+    @objc private func handleCameraStartNotification() {
+        implementation?.handleCameraStartNotification()
+    }
+
+    @objc private func handleCameraStopNotification() {
+        implementation?.handleCameraStopNotification()
     }
 
     private func getPrivacyScreenConfig() -> PrivacyScreenConfig {
