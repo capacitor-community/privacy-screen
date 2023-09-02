@@ -7,25 +7,22 @@ import Capacitor
  */
 @objc(PrivacyScreenPlugin)
 public class PrivacyScreenPlugin: CAPPlugin {
-    private var isEnabled = true
-    private var privacyViewController: UIViewController?
+    private var implementation: PrivacyScreen?
 
     override public func load() {
-        self.isEnabled = privacyScreenConfig().enable
-        self.privacyViewController = UIViewController()
-        self.privacyViewController!.view.backgroundColor = UIColor.gray
-        self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-
-        NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDidBecomeActive),
-                                               name: UIApplication.didBecomeActiveNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.onAppWillResignActive),
-                                               name: UIApplication.willResignActiveNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDetectCapturing),
-                                               name: UIScreen.capturedDidChangeNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.onAppDetectScreenshot),
-                                               name: UIApplication.userDidTakeScreenshotNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.onAppOrientationChanged),
-                                               name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
+        let config = getPrivacyScreenConfig()
+        self.implementation = PrivacyScreen(plugin: self, config: config)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleDidBecomeActiveNotification),
+                                                       name: UIApplication.didBecomeActiveNotification, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(self.handleWillResignActiveNotification),
+                                                       name: UIApplication.willResignActiveNotification, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(self.handleCapturedDidChangeNotification),
+                                                       name: UIScreen.capturedDidChangeNotification, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(self.handleUserDidTakeScreenshotNotification),
+                                                       name: UIApplication.userDidTakeScreenshotNotification, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(self.handleDidChangeStatusBarOrientationNotification),
+                                                       name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
     }
 
     deinit {
@@ -33,38 +30,26 @@ public class PrivacyScreenPlugin: CAPPlugin {
     }
 
     @objc func enable(_ call: CAPPluginCall) {
-        self.isEnabled = true
-        DispatchQueue.main.async {
-            self.bridge?.webView?.disableScreenshots()
-        }
-        call.resolve()
+        implementation?.enable(completion: {
+            call.resolve()
+        })
     }
 
     @objc func disable(_ call: CAPPluginCall) {
-        self.isEnabled = false
-        DispatchQueue.main.async {
-            self.bridge?.webView?.enableScreenshots()
-        }
-        call.resolve()
+        implementation?.disable(completion: {
+            call.resolve()
+        })
     }
 
-    @objc func onAppWillResignActive() {
-        guard self.isEnabled else {
-            return
-        }
-
-        DispatchQueue.main.async {
-            self.bridge?.viewController?.present(self.privacyViewController!, animated: false, completion: nil)
-        }
+    @objc private func handleWillResignActiveNotification() {
+        implementation?.handleWillResignActiveNotification()
     }
 
-    @objc func onAppDidBecomeActive() {
-        DispatchQueue.main.async {
-            self.privacyViewController?.dismiss(animated: false, completion: nil)
-        }
+    @objc private func handleDidBecomeActiveNotification() {
+        implementation?.handleDidBecomeActiveNotification()
     }
 
-    @objc private func onAppDetectCapturing() {
+    @objc private func handleCapturedDidChangeNotification() {
         if #available(iOS 11.0, *) {
             if UIScreen.main.isCaptured {
                 self.notifyListeners("screenRecordingStarted", data: nil)
@@ -74,43 +59,17 @@ public class PrivacyScreenPlugin: CAPPlugin {
         }
     }
 
-    @objc private func onAppDetectScreenshot() {
+    @objc private func handleUserDidTakeScreenshotNotification() {
         self.notifyListeners("screenshotTaken", data: nil)
     }
 
-    @objc private func onAppOrientationChanged() {
-        self.bridge?.webView?.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+    @objc private func handleDidChangeStatusBarOrientationNotification() {
+        implementation?.handleDidChangeStatusBarOrientationNotification()
     }
 
-    private func privacyScreenConfig() -> PrivacyScreenConfig {
+    private func getPrivacyScreenConfig() -> PrivacyScreenConfig {
         var config = PrivacyScreenConfig()
         config.enable = getConfig().getBoolean("enable", config.enable)
-        if config.enable {
-            DispatchQueue.main.async {
-                self.bridge?.webView?.disableScreenshots()
-            }
-        }
         return config
-    }
-}
-
-public extension WKWebView {
-    func disableScreenshots() {
-        let field = UITextField()
-        field.isSecureTextEntry = true
-        field.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(field)
-        field.centerYAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        field.centerXAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        self.layer.superlayer?.addSublayer(field.layer)
-        field.layer.sublayers?.first?.addSublayer(self.layer)
-    }
-
-    func enableScreenshots() {
-        for view in self.subviews {
-            if let textField = view as? UITextField {
-                textField.isSecureTextEntry = false
-            }
-        }
     }
 }

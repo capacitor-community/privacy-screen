@@ -10,52 +10,21 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 @CapacitorPlugin(name = "PrivacyScreen")
 public class PrivacyScreenPlugin extends Plugin {
 
-    private PrivacyScreenConfig config;
+    private PrivacyScreen implementation;
 
     public void load() {
-        config = getPrivacyScreenConfig();
-        boolean isEnabled = config.isEnabled();
-        if (isEnabled) {
-            addFlags();
-        }
+        PrivacyScreenConfig config = getPrivacyScreenConfig();
+        implementation = new PrivacyScreen(this, config);
     }
 
     @PluginMethod
     public void enable(final PluginCall call) {
-        this.getBridge()
-            .executeOnMainThread(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        addFlags();
-                        call.resolve();
-                    }
-                }
-            );
+        implementation.enable(() -> call.resolve());
     }
 
     @PluginMethod
     public void disable(final PluginCall call) {
-        this.getBridge()
-            .executeOnMainThread(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        clearFlags();
-                        call.resolve();
-                    }
-                }
-            );
-    }
-
-    private void addFlags() {
-        Window window = getActivity().getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-    }
-
-    private void clearFlags() {
-        Window window = getActivity().getWindow();
-        window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        implementation.disable(() -> call.resolve());
     }
 
     private PrivacyScreenConfig getPrivacyScreenConfig() {
