@@ -14,7 +14,18 @@ import UIKit
         self.config = config
 
         self.privacyViewController = UIViewController()
-        self.privacyViewController!.view.backgroundColor = UIColor.gray
+        if(!self.config.useImageBackground){
+            self.privacyViewController!.view.backgroundColor = UIColor.gray
+        }else{
+            self.privacyViewController!.view.backgroundColor = UIColor.systemBackground
+            var imageView = UIImageView()
+            imageView.frame = CGRect(x: 0, y: 0, width: self.privacyViewController!.view.bounds.width  , height:  self.privacyViewController!.view.bounds.height)
+            imageView.contentMode = .center
+            imageView.clipsToBounds = true
+            let imageBackground = UIImage(named: self.config.imageName)
+            imageView.image = imageBackground
+            self.privacyViewController!.view.addSubview(imageView)
+        }
         self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
 
         super.init()
@@ -26,7 +37,7 @@ import UIKit
     @objc public func enable(completion: (() -> Void)?) {
         self.isEnabled = true
         DispatchQueue.main.async {
-            self.plugin.bridge?.webView?.disableScreenshots()
+            self.plugin.bridge?.webView?.disableScreenshots(self.config.useImageBackground, self.config.imageName)
             completion?()
         }
     }
@@ -61,9 +72,26 @@ import UIKit
 }
 
 public extension WKWebView {
-    func disableScreenshots() {
+    func disableScreenshots(_ useImageBackground: Bool = false, _ imageName: String = "") {
         let field = UITextField()
         field.isSecureTextEntry = true
+        if(useImageBackground){
+                    let imageBackground = UIImage(named: imageName)
+                    field.backgroundColor = UIColor.systemBackground
+
+                    var backgroundView = UIView()
+                    backgroundView.backgroundColor = UIColor.systemBackground
+                    backgroundView.frame = self.bounds
+                    field.addSubview(backgroundView)
+
+                    var imageView = UIImageView()
+                    imageView.frame = self.bounds
+                    imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                    imageView.contentMode = .center
+                    imageView.clipsToBounds = true
+                    imageView.image = imageBackground
+                    field.addSubview(imageView)
+         }
         field.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(field)
         field.centerYAnchor.constraint(equalTo: self.topAnchor).isActive = true
