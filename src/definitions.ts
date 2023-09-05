@@ -17,6 +17,16 @@ declare module '@capacitor/cli' {
        * @example true
        */
       enable?: boolean;
+      /**
+       * Configure whether the plugin should display a custom image from assets instead of a default background gray for the privacy screen.
+       *
+       * Only available for iOS.
+       *
+       * @default ""
+       * @example "Splashscreen"
+       */
+      imageName?: string;
+
     };
   }
 }

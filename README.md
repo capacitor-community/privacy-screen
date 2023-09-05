@@ -48,9 +48,10 @@ npx cap sync
 
 These configuration values are available:
 
-| Prop         | Type                 | Description                                                                                      | Default           |
-| ------------ | -------------------- | ------------------------------------------------------------------------------------------------ | ----------------- |
-| **`enable`** | <code>boolean</code> | Configure whether the plugin should be enabled from startup. Only available for Android and iOS. | <code>true</code> |
+| Prop            | Type                 | Description                                                                                                                                                 | Default           |
+| --------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| **`enable`**    | <code>boolean</code> | Configure whether the plugin should be enabled from startup. Only available for Android and iOS.                                                            | <code>true</code> |
+| **`imageName`** | <code>string</code>  | Configure whether the plugin should display a custom image from assets instead of a default background gray for the privacy screen. Only available for iOS. | <code>""</code>   |
 
 ### Examples
 
@@ -60,7 +61,8 @@ In `capacitor.config.json`:
 {
   "plugins": {
     "PrivacyScreen": {
-      "enable": true
+      "enable": true,
+      "imageName": "Splashscreen"
     }
   }
 }
@@ -77,6 +79,7 @@ const config: CapacitorConfig = {
   plugins: {
     PrivacyScreen: {
       enable: true,
+      imageName: "Splashscreen",
     },
   },
 };
