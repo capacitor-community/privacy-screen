@@ -14,7 +14,7 @@ import UIKit
         self.config = config
 
         self.privacyViewController = UIViewController()
-        if(self.config.imageName === "" || self.config.imageName === nil){
+        if(self.config.imageName == "" || self.config.imageName == nil){
             self.privacyViewController!.view.backgroundColor = UIColor.gray
         }else{
             self.privacyViewController!.view.backgroundColor = UIColor.systemBackground
@@ -75,7 +75,7 @@ public extension WKWebView {
     func disableScreenshots(_ imageName: String = "") {
         let field = UITextField()
         field.isSecureTextEntry = true
-        if(imageName !== ""){
+        if(imageName != ""){
                     let imageBackground = UIImage(named: imageName)
                     field.backgroundColor = UIColor.systemBackground
 
