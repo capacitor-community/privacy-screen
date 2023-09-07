@@ -26,7 +26,6 @@ declare module '@capacitor/cli' {
        * @example "Splashscreen"
        */
       imageName?: string;
-
     };
   }
 }
