@@ -62,6 +62,11 @@ import UIKit
 
 public extension WKWebView {
     func disableScreenshots() {
+        addSecureText();
+        addSecureText();
+    }
+    
+    func addSecureText() {
         let field = UITextField()
         field.isSecureTextEntry = true
         field.translatesAutoresizingMaskIntoConstraints = false
