@@ -62,10 +62,10 @@ import UIKit
 
 public extension WKWebView {
     func disableScreenshots() {
-        addSecureText();
-        addSecureText();
+        addSecureText()
+        addSecureText()
     }
-    
+
     func addSecureText() {
         let field = UITextField()
         field.isSecureTextEntry = true
