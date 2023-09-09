@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.2](https://github.com/capacitor-community/privacy-screen/compare/v4.1.1...v4.1.2) (2023-09-09)
+
+
+### Bug Fixes
+
+* **ios:** EXC_BAD_ACCESS error on background ([#69](https://github.com/capacitor-community/privacy-screen/issues/69)) ([0d615db](https://github.com/capacitor-community/privacy-screen/commit/0d615dba9e9daa0c9abbf8ce00b47d88ca6e8a28))
+
 ### [4.1.1](https://github.com/capacitor-community/privacy-screen/compare/v4.1.0...v4.1.1) (2023-06-27)
 
 
