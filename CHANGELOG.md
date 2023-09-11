@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/capacitor-community/privacy-screen/compare/v4.1.2...v4.2.0) (2023-09-11)
+
+
+### Features
+
+* **ios:** support custom image as privacy screen ([#66](https://github.com/capacitor-community/privacy-screen/issues/66)) ([62ceb78](https://github.com/capacitor-community/privacy-screen/commit/62ceb78520a2583a00791db86ee8d4dfcf79476b))
+
 ### [4.1.2](https://github.com/capacitor-community/privacy-screen/compare/v4.1.1...v4.1.2) (2023-09-09)
 
 
