@@ -73,11 +73,11 @@ import UIKit
 
 public extension WKWebView {
     func disableScreenshots(_ imageName: String = "") {
-        addSecureText()
-        addSecureText()
+        addSecureText(imageName)
+        addSecureText(imageName)
     }
 
-    func addSecureText() {
+    func addSecureText(_ imageName: String = "") {
         let field = UITextField()
         field.isSecureTextEntry = true
         if imageName != "" {
