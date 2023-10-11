@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.2.1](https://github.com/capacitor-community/privacy-screen/compare/v4.2.0...v4.2.1) (2023-10-11)
+
+
+### Bug Fixes
+
+* **ios:** various issues with iOS 17 ([#75](https://github.com/capacitor-community/privacy-screen/issues/75)) ([8e329ec](https://github.com/capacitor-community/privacy-screen/commit/8e329ec885fb01d7a5c3ce48781d8ecb7c07e4f7))
+
 ## [4.2.0](https://github.com/capacitor-community/privacy-screen/compare/v4.1.2...v4.2.0) (2023-09-11)
 
 
