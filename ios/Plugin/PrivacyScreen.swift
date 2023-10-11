@@ -5,28 +5,14 @@ import UIKit
 @objc public class PrivacyScreen: NSObject {
     private let plugin: PrivacyScreenPlugin
     private let config: PrivacyScreenConfig
+    private let privacyViewController: UIViewController
 
-    private var isEnabled = true
-    private var privacyViewController: UIViewController?
+    private var isEnabled = false
 
     init(plugin: PrivacyScreenPlugin, config: PrivacyScreenConfig) {
         self.plugin = plugin
         self.config = config
-
-        self.privacyViewController = UIViewController()
-        if self.config.imageName == "" || self.config.imageName == nil {
-            self.privacyViewController!.view.backgroundColor = UIColor.gray
-        } else {
-            self.privacyViewController!.view.backgroundColor = UIColor.systemBackground
-            var imageView = UIImageView()
-            imageView.frame = CGRect(x: 0, y: 0, width: self.privacyViewController!.view.bounds.width, height: self.privacyViewController!.view.bounds.height)
-            imageView.contentMode = .center
-            imageView.clipsToBounds = true
-            let imageBackground = UIImage(named: self.config.imageName)
-            imageView.image = imageBackground
-            self.privacyViewController!.view.addSubview(imageView)
-        }
-        self.privacyViewController!.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        self.privacyViewController = PrivacyScreen.createPrivacyViewController(config: config)
 
         super.init()
         if config.enable {
@@ -37,7 +23,7 @@ import UIKit
     @objc public func enable(completion: (() -> Void)?) {
         self.isEnabled = true
         DispatchQueue.main.async {
-            self.plugin.bridge?.webView?.disableScreenshots(self.config.imageName)
+            self.plugin.bridge?.webView?.disableScreenshots(imageName: self.config.imageName)
             completion?()
         }
     }
@@ -54,55 +40,57 @@ import UIKit
         guard self.isEnabled else {
             return
         }
-
         DispatchQueue.main.async {
-            self.plugin.bridge?.viewController?.present(self.privacyViewController!, animated: false, completion: nil)
+            self.plugin.bridge?.viewController?.present(self.privacyViewController, animated: false, completion: nil)
         }
     }
 
     @objc public func handleDidBecomeActiveNotification() {
         DispatchQueue.main.async {
-            self.privacyViewController?.dismiss(animated: false, completion: nil)
+            self.privacyViewController.dismiss(animated: false, completion: nil)
         }
     }
 
     @objc public func handleDidChangeStatusBarOrientationNotification() {
         self.plugin.bridge?.webView?.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
     }
+
+    private static func createPrivacyViewController(config: PrivacyScreenConfig) -> UIViewController {
+        let privacyViewController = UIViewController()
+        if let imageName = config.imageName {
+            privacyViewController.view.backgroundColor = UIColor.systemBackground
+
+            let imageView = UIImageView()
+            imageView.frame = CGRect(x: 0, y: 0, width: privacyViewController.view.bounds.width, height: privacyViewController.view.bounds.height)
+            imageView.contentMode = .center
+            imageView.clipsToBounds = true
+            imageView.image = UIImage(named: imageName)
+            privacyViewController.view.addSubview(imageView)
+        } else {
+            privacyViewController.view.backgroundColor = UIColor.gray
+        }
+        privacyViewController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        return privacyViewController
+    }
 }
 
 public extension WKWebView {
-    func disableScreenshots(_ imageName: String = "") {
+    // Cannot be tested in simulator
+    func disableScreenshots(imageName: String?) {
         addSecureText(imageName)
         addSecureText(imageName)
     }
 
-    func addSecureText(_ imageName: String = "") {
+    func addSecureText(_ imageName: String?) {
         let field = UITextField()
         field.isSecureTextEntry = true
-        if imageName != "" {
-            let imageBackground = UIImage(named: imageName)
-            field.backgroundColor = UIColor.systemBackground
-
-            var backgroundView = UIView()
-            backgroundView.backgroundColor = UIColor.systemBackground
-            backgroundView.frame = self.bounds
-            field.addSubview(backgroundView)
-
-            var imageView = UIImageView()
-            imageView.frame = self.bounds
-            imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            imageView.contentMode = .center
-            imageView.clipsToBounds = true
-            imageView.image = imageBackground
-            field.addSubview(imageView)
-        }
         field.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(field)
         field.centerYAnchor.constraint(equalTo: self.topAnchor).isActive = true
         field.centerXAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         self.layer.superlayer?.addSublayer(field.layer)
-        field.layer.sublayers?.first?.addSublayer(self.layer)
+        // Must be `last` for iOS 17, see https://github.com/capacitor-community/privacy-screen/issues/74
+        field.layer.sublayers?.last?.addSublayer(self.layer)
     }
 
     func enableScreenshots() {

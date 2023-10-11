@@ -70,7 +70,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
     private func getPrivacyScreenConfig() -> PrivacyScreenConfig {
         var config = PrivacyScreenConfig()
         config.enable = getConfig().getBoolean("enable", config.enable)
-        config.imageName = getConfig().getString("imageName", config.imageName)!
+        config.imageName = getConfig().getString("imageName", config.imageName)
         return config
     }
 }
