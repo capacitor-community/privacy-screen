@@ -89,6 +89,7 @@ public extension WKWebView {
         field.centerYAnchor.constraint(equalTo: self.topAnchor).isActive = true
         field.centerXAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         self.layer.superlayer?.addSublayer(field.layer)
+        // Must be `last` for iOS 17, see https://github.com/capacitor-community/privacy-screen/issues/74
         field.layer.sublayers?.last?.addSublayer(self.layer)
     }
 
