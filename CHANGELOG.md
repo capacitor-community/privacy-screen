@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.2.2](https://github.com/capacitor-community/privacy-screen/compare/v4.2.1...v4.2.2) (2023-11-06)
+
+
+### Bug Fixes
+
+* **ios:** empty `imageName` leads to whitescreen ([#81](https://github.com/capacitor-community/privacy-screen/issues/81)) ([17eac57](https://github.com/capacitor-community/privacy-screen/commit/17eac57b5e3827215731e11ee231a4a9d326a3c1))
+
 ### [4.2.1](https://github.com/capacitor-community/privacy-screen/compare/v4.2.0...v4.2.1) (2023-10-11)
 
 
