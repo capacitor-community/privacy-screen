@@ -41,7 +41,15 @@ import UIKit
             return
         }
         DispatchQueue.main.async {
-            self.plugin.bridge?.viewController?.present(self.privacyViewController, animated: false, completion: nil)
+            let window = UIApplication.shared.connectedScenes.filter({$0.activationState == .foregroundActive || $0.activationState == .foregroundInactive}).compactMap({$0 as? UIWindowScene}).first?.windows.filter({$0.isKeyWindow}).first
+            if var rootVC = window?.rootViewController {
+                while let topVC = rootVC.presentedViewController {
+                    rootVC = topVC
+                }
+                rootVC.present(self.privacyViewController, animated: false, completion: nil)
+            } else {
+                self.plugin.bridge?.viewController?.present(self.privacyViewController, animated: false, completion: nil)
+            }
         }
     }
 
