@@ -50,12 +50,10 @@ public class PrivacyScreenPlugin: CAPPlugin {
     }
 
     @objc private func handleCapturedDidChangeNotification() {
-        if #available(iOS 11.0, *) {
-            if UIScreen.main.isCaptured {
-                self.notifyListeners("screenRecordingStarted", data: nil)
-            } else {
-                self.notifyListeners("screenRecordingStopped", data: nil)
-            }
+        if UIScreen.main.isCaptured {
+            self.notifyListeners("screenRecordingStarted", data: nil)
+        } else {
+            self.notifyListeners("screenRecordingStopped", data: nil)
         }
     }
 
