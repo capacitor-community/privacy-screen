@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.2.3](https://github.com/capacitor-community/privacy-screen/compare/v4.2.2...v4.2.3) (2024-02-17)
+
+
+### Bug Fixes
+
+* **ios:** present the privacyViewController on the top ViewController ([#85](https://github.com/capacitor-community/privacy-screen/issues/85)) ([0603063](https://github.com/capacitor-community/privacy-screen/commit/0603063e7e1f550bf74d43aa216d3116329f6ee1))
+
 ### [4.2.2](https://github.com/capacitor-community/privacy-screen/compare/v4.2.1...v4.2.2) (2023-11-06)
 
 
