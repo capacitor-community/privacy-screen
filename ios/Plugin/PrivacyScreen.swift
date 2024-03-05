@@ -6,10 +6,11 @@ import UIKit
     private let plugin: PrivacyScreenPlugin
     private let config: PrivacyScreenConfig
     private let privacyViewController: UIViewController
-
     private var isEnabled = false
+    private var window: UIWindow? = nil
+    private var screenPrevent = UITextField()
 
-    init(plugin: PrivacyScreenPlugin, config: PrivacyScreenConfig) {
+    init(plugin: PrivacyScreenPlugin, config: PrivacyScreenConfig, window: UIWindow?) {
         self.plugin = plugin
         self.config = config
         self.privacyViewController = PrivacyScreen.createPrivacyViewController(config: config)
@@ -18,12 +19,31 @@ import UIKit
         if config.enable {
             self.enable(completion: nil)
         }
+
+        self.window = window
+        configurePreventionScreenshot()
+    }
+
+    public func configurePreventionScreenshot() {
+        guard let w = window else { return }
+        
+        if (!w.subviews.contains(screenPrevent)) {
+            w.addSubview(screenPrevent)
+            screenPrevent.centerYAnchor.constraint(equalTo: w.centerYAnchor).isActive = true
+            screenPrevent.centerXAnchor.constraint(equalTo: w.centerXAnchor).isActive = true
+            w.layer.superlayer?.addSublayer(screenPrevent.layer)
+            if #available(iOS 17.0, *) {
+                screenPrevent.layer.sublayers?.last?.addSublayer(w.layer)
+            } else {
+                screenPrevent.layer.sublayers?.first?.addSublayer(w.layer)
+            }
+        }
     }
 
     @objc public func enable(completion: (() -> Void)?) {
         self.isEnabled = true
         DispatchQueue.main.async {
-            self.plugin.bridge?.webView?.disableScreenshots(imageName: self.config.imageName)
+            self.plugin.bridge?.webView?.disableScreenshots(imageName: self.config.imageName, screenPrevent: self.screenPrevent)
             completion?()
         }
     }
@@ -31,7 +51,7 @@ import UIKit
     @objc public func disable(completion: (() -> Void)?) {
         self.isEnabled = false
         DispatchQueue.main.async {
-            self.plugin.bridge?.webView?.enableScreenshots()
+            self.plugin.bridge?.webView?.enableScreenshots(screenPrevent: self.screenPrevent)
             completion?()
         }
     }
@@ -85,29 +105,12 @@ import UIKit
 }
 
 public extension WKWebView {
-    // Cannot be tested in simulator
-    func disableScreenshots(imageName: String?) {
-        addSecureText(imageName)
-        addSecureText(imageName)
-    }
 
-    func addSecureText(_ imageName: String?) {
-        let field = UITextField()
-        field.isSecureTextEntry = true
-        field.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(field)
-        field.centerYAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        field.centerXAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        self.layer.superlayer?.addSublayer(field.layer)
-        // Must be `last` for iOS 17, see https://github.com/capacitor-community/privacy-screen/issues/74
-        field.layer.sublayers?.last?.addSublayer(self.layer)
-    }
-
-    func enableScreenshots() {
-        for view in self.subviews {
-            if let textField = view as? UITextField {
-                textField.isSecureTextEntry = false
-            }
+        func enableScreenshots(screenPrevent: UITextField) {
+            screenPrevent.isSecureTextEntry = false
         }
-    }
+
+        func disableScreenshots(imageName: String?, screenPrevent: UITextField) {
+            screenPrevent.isSecureTextEntry = true
+        }
 }
