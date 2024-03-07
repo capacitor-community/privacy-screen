@@ -7,7 +7,7 @@ import UIKit
     private let config: PrivacyScreenConfig
     private let privacyViewController: UIViewController
     private var isEnabled = false
-    private var window: UIWindow? = nil
+    private var window: UIWindow?
     private var screenPrevent = UITextField()
 
     init(plugin: PrivacyScreenPlugin, config: PrivacyScreenConfig, window: UIWindow?) {
@@ -26,8 +26,8 @@ import UIKit
 
     public func configurePreventionScreenshot() {
         guard let w = window else { return }
-        
-        if (!w.subviews.contains(screenPrevent)) {
+
+        if !w.subviews.contains(screenPrevent) {
             w.addSubview(screenPrevent)
             screenPrevent.centerYAnchor.constraint(equalTo: w.centerYAnchor).isActive = true
             screenPrevent.centerXAnchor.constraint(equalTo: w.centerXAnchor).isActive = true
@@ -106,11 +106,11 @@ import UIKit
 
 public extension WKWebView {
 
-        func enableScreenshots(screenPrevent: UITextField) {
-            screenPrevent.isSecureTextEntry = false
-        }
+    func enableScreenshots(screenPrevent: UITextField) {
+        screenPrevent.isSecureTextEntry = false
+    }
 
-        func disableScreenshots(imageName: String?, screenPrevent: UITextField) {
-            screenPrevent.isSecureTextEntry = true
-        }
+    func disableScreenshots(imageName: String?, screenPrevent: UITextField) {
+        screenPrevent.isSecureTextEntry = true
+    }
 }
