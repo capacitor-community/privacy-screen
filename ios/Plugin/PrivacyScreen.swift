@@ -25,17 +25,17 @@ import UIKit
     }
 
     public func configurePreventionScreenshot() {
-        guard let w = window else { return }
+        guard let mainWindow = window else { return }
 
-        if !w.subviews.contains(screenPrevent) {
-            w.addSubview(screenPrevent)
-            screenPrevent.centerYAnchor.constraint(equalTo: w.centerYAnchor).isActive = true
-            screenPrevent.centerXAnchor.constraint(equalTo: w.centerXAnchor).isActive = true
-            w.layer.superlayer?.addSublayer(screenPrevent.layer)
+        if !mainWindow.subviews.contains(screenPrevent) {
+            mainWindow.addSubview(screenPrevent)
+            screenPrevent.centerYAnchor.constraint(equalTo: mainWindow.centerYAnchor).isActive = true
+            screenPrevent.centerXAnchor.constraint(equalTo: mainWindow.centerXAnchor).isActive = true
+            mainWindow.layer.superlayer?.addSublayer(screenPrevent.layer)
             if #available(iOS 17.0, *) {
-                screenPrevent.layer.sublayers?.last?.addSublayer(w.layer)
+                screenPrevent.layer.sublayers?.last?.addSublayer(mainWindow.layer)
             } else {
-                screenPrevent.layer.sublayers?.first?.addSublayer(w.layer)
+                screenPrevent.layer.sublayers?.first?.addSublayer(mainWindow.layer)
             }
         }
     }
