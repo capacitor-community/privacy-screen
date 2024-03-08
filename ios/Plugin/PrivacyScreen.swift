@@ -99,7 +99,7 @@ import UIKit
         } else {
             privacyViewController.view.backgroundColor = UIColor.gray
         }
-        privacyViewController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        privacyViewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         return privacyViewController
     }
 }
