@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.2.4](https://github.com/capacitor-community/privacy-screen/compare/v4.2.3...v4.2.4) (2024-03-08)
+
+
+### Bug Fixes
+
+* various issues with the preventing screenshots feature ([#87](https://github.com/capacitor-community/privacy-screen/issues/87)) ([1074e69](https://github.com/capacitor-community/privacy-screen/commit/1074e697f8d6069fe67d14b711946080116b9216))
+
 ### [4.2.3](https://github.com/capacitor-community/privacy-screen/compare/v4.2.2...v4.2.3) (2024-02-17)
 
 
