@@ -11,7 +11,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
 
     override public func load() {
         let config = getPrivacyScreenConfig()
-        self.implementation = PrivacyScreen(plugin: self, config: config)
+        self.implementation = PrivacyScreen(plugin: self, config: config, window: UIApplication.shared.delegate?.window as? UIWindow)
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleDidBecomeActiveNotification),
                                                name: UIApplication.didBecomeActiveNotification, object: nil)
