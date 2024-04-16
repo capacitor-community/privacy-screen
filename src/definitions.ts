@@ -57,7 +57,7 @@ export interface PrivacyScreenPlugin {
   addListener(
     eventName: 'screenRecordingStarted',
     listenerFunc: () => void,
-  ): Promise<PluginListenerHandle> & PluginListenerHandle;
+  ): Promise<PluginListenerHandle>;
   /**
    * Called when the screen recording is stopped.
    *
@@ -68,7 +68,7 @@ export interface PrivacyScreenPlugin {
   addListener(
     eventName: 'screenRecordingStopped',
     listenerFunc: () => void,
-  ): Promise<PluginListenerHandle> & PluginListenerHandle;
+  ): Promise<PluginListenerHandle>;
   /**
    * Called when the screenshot is taken.
    *
@@ -79,7 +79,7 @@ export interface PrivacyScreenPlugin {
   addListener(
     eventName: 'screenshotTaken',
     listenerFunc: () => void,
-  ): Promise<PluginListenerHandle> & PluginListenerHandle;
+  ): Promise<PluginListenerHandle>;
   /**
    * Remove all listeners for this plugin.
    *
