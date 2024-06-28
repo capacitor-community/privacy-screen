@@ -60,6 +60,9 @@ import UIKit
         guard self.isEnabled else {
             return
         }
+        guard privacyViewController.presentingViewController == nil else {
+            return
+        }
         DispatchQueue.main.async {
             let window = UIApplication.shared.connectedScenes
                 .filter({$0.activationState == .foregroundActive || $0.activationState == .foregroundInactive})
