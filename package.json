@@ -11,6 +11,8 @@
     "android/build.gradle",
     "dist/",
     "ios/Sources/",
+    "ios/Tests/",
+    "Package.swift",
     "CapacitorCommunityPrivacyScreen.podspec"
   ],
   "author": "Robin Genz <mail@robingenz.dev>",
