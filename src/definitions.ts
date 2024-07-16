@@ -26,6 +26,17 @@ declare module '@capacitor/cli' {
        * @example "Splashscreen"
        */
       imageName?: string;
+      /**
+       * Configure the content mode of displayed image. 
+       * Accepts values "center", "scaleToFill", "scaleAspectFit", "scaleAspectFill".
+       * Defaults to UIView.ContentMode.center in case of a different value or no value provided.
+       *
+       * Only available for iOS.
+       *
+       * @default ""
+       * @example "Splashscreen"
+       */
+      contentMode?: string;
     };
   }
 }

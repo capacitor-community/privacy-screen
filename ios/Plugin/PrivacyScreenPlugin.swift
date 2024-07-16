@@ -69,6 +69,17 @@ public class PrivacyScreenPlugin: CAPPlugin {
         var config = PrivacyScreenConfig()
         config.enable = getConfig().getBoolean("enable", config.enable)
         config.imageName = getConfig().getString("imageName", config.imageName)
+        config.contentMode = getContentModeFromString(getConfig().getString("contentMode"))
         return config
+    }
+    
+    private func getContentModeFromString(_ contentMode: String?) -> UIView.ContentMode? {
+        switch contentMode?.lowercased() {
+            case "scaletofill": return .scaleToFill
+            case "scaleaspectfit": return .scaleAspectFit
+            case "scaleaspectfill": return .scaleAspectFill
+            case "center": return .center
+        default: return .center
+        }
     }
 }
