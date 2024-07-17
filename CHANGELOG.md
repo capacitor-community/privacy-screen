@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.1.1](https://github.com/capacitor-community/privacy-screen/compare/v5.1.0...v5.1.1) (2024-07-17)
+
+
+### Bug Fixes
+
+* **ios:** `application tried to present modal view controller on itself` ([#98](https://github.com/capacitor-community/privacy-screen/issues/98)) ([28b3d51](https://github.com/capacitor-community/privacy-screen/commit/28b3d518561dfc87d0ed5df6793a95505db24b59))
+
 ## [5.1.0](https://github.com/capacitor-community/privacy-screen/compare/v5.0.0...v5.1.0) (2024-07-17)
 
 
