@@ -68,9 +68,13 @@ import UIKit
                 while let topVC = rootVC.presentedViewController {
                     rootVC = topVC
                 }
-                rootVC.present(self.privacyViewController, animated: false, completion: nil)
+                if rootVC.presentedViewController != self.privacyViewController {
+                    rootVC.present(self.privacyViewController, animated: false, completion: nil)
+                }
             } else {
-                self.plugin.bridge?.viewController?.present(self.privacyViewController, animated: false, completion: nil)
+                if self.plugin.bridge?.viewController?.presentedViewController != self.privacyViewController {
+                    self.plugin.bridge?.viewController?.present(self.privacyViewController, animated: false, completion: nil)
+                }
             }
         }
     }
