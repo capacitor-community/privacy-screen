@@ -27,16 +27,19 @@ declare module '@capacitor/cli' {
        */
       imageName?: string;
       /**
-       * Configure the content mode of displayed image. 
-       * Accepts values "center", "scaleToFill", "scaleAspectFit", "scaleAspectFill".
-       * Defaults to UIView.ContentMode.center in case of a different value or no value provided.
+       * Configure the content mode of displayed image.
        *
        * Only available for iOS.
        *
-       * @default ""
-       * @example "center"
+       * @default "center"
+       * @example "scaleAspectFit"
+       * @see https://developer.apple.com/documentation/uikit/uiview/1622619-contentmode
        */
-      contentMode?: string;
+      contentMode?:
+        | 'center'
+        | 'scaleToFill'
+        | 'scaleAspectFit'
+        | 'scaleAspectFill';
     };
   }
 }

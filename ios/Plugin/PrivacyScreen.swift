@@ -90,7 +90,7 @@ import UIKit
         if let imageName = config.imageName, !imageName.isEmpty {
             privacyViewController.view.backgroundColor = UIColor.systemBackground
 
-            let contentMode = config.contentMode ?? UIView.ContentMode.center
+            let contentMode = getContentModeFromString(config.contentMode) ?? .center
             let imageView = UIImageView()
             imageView.frame = CGRect(x: 0, y: 0, width: privacyViewController.view.bounds.width, height: privacyViewController.view.bounds.height)
             imageView.contentMode = contentMode
@@ -102,6 +102,16 @@ import UIKit
         }
         privacyViewController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
         return privacyViewController
+    }
+    
+    private static func getContentModeFromString(_ contentMode: String?) -> UIView.ContentMode? {
+        switch contentMode?.lowercased() {
+            case "center": return .center
+            case "scaleAspectFill": return .scaleAspectFill
+            case "scaleAspectFit": return .scaleAspectFit
+            case "scaleToFill": return .scaleToFill
+            default: return nil
+        }
     }
 }
 
