@@ -48,12 +48,11 @@ npx cap sync
 
 These configuration values are available:
 
-| Prop              | Type                 | Description                                                                                                                                                                                                             | Default           |
-| ----------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| **`enable`**      | <code>boolean</code> | Configure whether the plugin should be enabled from startup. Only available for Android and iOS.                                                                                                                        | <code>true</code> |
-| **`imageName`**   | <code>string</code>  | Configure whether the plugin should display a custom image from assets instead of a default background gray for the privacy screen. Only available for iOS.                                                             | <code>""</code>   |
+| Prop            | Type                 | Description                                                                                                                                                 | Default           |
+| --------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| **`enable`**    | <code>boolean</code> | Configure whether the plugin should be enabled from startup. Only available for Android and iOS.                                                            | <code>true</code> |
+| **`imageName`** | <code>string</code>  | Configure whether the plugin should display a custom image from assets instead of a default background gray for the privacy screen. Only available for iOS. | <code>""</code>   |
 | **`contentMode`** | <code>string</code>  | Configure the content mode of displayed image. Accepts values "center", "scaleToFill", "scaleAspectFit", "scaleAspectFill". Defaults to UIView.ContentMode.center in case of no value provided. Only available for iOS. | <code>""</code>   |
-
 ### Examples
 
 In `capacitor.config.json`:
@@ -163,7 +162,7 @@ Only available for Android and iOS.
 ### addListener('screenRecordingStarted', ...)
 
 ```typescript
-addListener(eventName: 'screenRecordingStarted', listenerFunc: () => void) => Promise<PluginListenerHandle>
+addListener(eventName: 'screenRecordingStarted', listenerFunc: () => void) => Promise<PluginListenerHandle> & PluginListenerHandle
 ```
 
 Called when the screen recording is started.
@@ -175,7 +174,7 @@ Only available on iOS for now.
 | **`eventName`**    | <code>'screenRecordingStarted'</code> |
 | **`listenerFunc`** | <code>() =&gt; void</code>            |
 
-**Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt;</code>
+**Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt; & <a href="#pluginlistenerhandle">PluginListenerHandle</a></code>
 
 **Since:** 3.0.2
 
@@ -185,7 +184,7 @@ Only available on iOS for now.
 ### addListener('screenRecordingStopped', ...)
 
 ```typescript
-addListener(eventName: 'screenRecordingStopped', listenerFunc: () => void) => Promise<PluginListenerHandle>
+addListener(eventName: 'screenRecordingStopped', listenerFunc: () => void) => Promise<PluginListenerHandle> & PluginListenerHandle
 ```
 
 Called when the screen recording is stopped.
@@ -197,7 +196,7 @@ Only available on iOS for now.
 | **`eventName`**    | <code>'screenRecordingStopped'</code> |
 | **`listenerFunc`** | <code>() =&gt; void</code>            |
 
-**Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt;</code>
+**Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt; & <a href="#pluginlistenerhandle">PluginListenerHandle</a></code>
 
 **Since:** 3.0.2
 
@@ -207,7 +206,7 @@ Only available on iOS for now.
 ### addListener('screenshotTaken', ...)
 
 ```typescript
-addListener(eventName: 'screenshotTaken', listenerFunc: () => void) => Promise<PluginListenerHandle>
+addListener(eventName: 'screenshotTaken', listenerFunc: () => void) => Promise<PluginListenerHandle> & PluginListenerHandle
 ```
 
 Called when the screenshot is taken.
@@ -219,7 +218,7 @@ Only available on iOS for now.
 | **`eventName`**    | <code>'screenshotTaken'</code> |
 | **`listenerFunc`** | <code>() =&gt; void</code>     |
 
-**Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt;</code>
+**Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt; & <a href="#pluginlistenerhandle">PluginListenerHandle</a></code>
 
 **Since:** 3.2.0
 
