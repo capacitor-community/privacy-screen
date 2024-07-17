@@ -34,7 +34,7 @@ declare module '@capacitor/cli' {
        * Only available for iOS.
        *
        * @default ""
-       * @example "Splashscreen"
+       * @example "center"
        */
       contentMode?: string;
     };
