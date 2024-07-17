@@ -103,14 +103,14 @@ import UIKit
         privacyViewController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
         return privacyViewController
     }
-    
+
     private static func getContentModeFromString(_ contentMode: String?) -> UIView.ContentMode? {
         switch contentMode?.lowercased() {
-            case "center": return .center
-            case "scaleAspectFill": return .scaleAspectFill
-            case "scaleAspectFit": return .scaleAspectFit
-            case "scaleToFill": return .scaleToFill
-            default: return nil
+        case "center": return .center
+        case "scaleAspectFill": return .scaleAspectFill
+        case "scaleAspectFit": return .scaleAspectFit
+        case "scaleToFill": return .scaleToFill
+        default: return nil
         }
     }
 }
