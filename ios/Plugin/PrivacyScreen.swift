@@ -90,9 +90,10 @@ import UIKit
         if let imageName = config.imageName, !imageName.isEmpty {
             privacyViewController.view.backgroundColor = UIColor.systemBackground
 
+            let contentMode = config.contentMode ?? UIView.ContentMode.center
             let imageView = UIImageView()
             imageView.frame = CGRect(x: 0, y: 0, width: privacyViewController.view.bounds.width, height: privacyViewController.view.bounds.height)
-            imageView.contentMode = .center
+            imageView.contentMode = contentMode
             imageView.clipsToBounds = true
             imageView.image = UIImage(named: imageName)
             privacyViewController.view.addSubview(imageView)

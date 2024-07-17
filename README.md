@@ -52,7 +52,7 @@ These configuration values are available:
 | --------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
 | **`enable`**    | <code>boolean</code> | Configure whether the plugin should be enabled from startup. Only available for Android and iOS.                                                            | <code>true</code> |
 | **`imageName`** | <code>string</code>  | Configure whether the plugin should display a custom image from assets instead of a default background gray for the privacy screen. Only available for iOS. | <code>""</code>   |
-
+| **`contentMode`** | <code>string</code>  | Configure the content mode of displayed image. Accepts values "center", "scaleToFill", "scaleAspectFit", "scaleAspectFill". Defaults to UIView.ContentMode.center in case of no value provided. Only available for iOS. | <code>""</code>   |
 ### Examples
 
 In `capacitor.config.json`:
@@ -62,7 +62,8 @@ In `capacitor.config.json`:
   "plugins": {
     "PrivacyScreen": {
       "enable": true,
-      "imageName": "Splashscreen"
+      "imageName": "Splashscreen",
+      "contentMode": "scaleAspectFill"
     }
   }
 }
@@ -80,6 +81,7 @@ const config: CapacitorConfig = {
     PrivacyScreen: {
       enable: true,
       imageName: "Splashscreen",
+      contentMode: "scaleAspectFill"
     },
   },
 };
