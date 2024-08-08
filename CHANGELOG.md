@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.1.2](https://github.com/capacitor-community/privacy-screen/compare/v5.1.1...v5.1.2) (2024-08-08)
+
+
+### Bug Fixes
+
+* **ios:** `contentMode` configuration option not working ([#101](https://github.com/capacitor-community/privacy-screen/issues/101)) ([314b576](https://github.com/capacitor-community/privacy-screen/commit/314b576b01f69828a886245db973dbc7560cd175))
+
 ### [5.1.1](https://github.com/capacitor-community/privacy-screen/compare/v5.1.0...v5.1.1) (2024-07-17)
 
 
