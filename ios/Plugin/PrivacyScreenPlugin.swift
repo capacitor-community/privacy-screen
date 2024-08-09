@@ -70,6 +70,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
         config.enable = getConfig().getBoolean("enable", config.enable)
         config.imageName = getConfig().getString("imageName", config.imageName)
         config.contentMode = getConfig().getString("contentMode", config.contentMode)
+        config.disableScreenshots = getConfig().getBoolean("disableScreenshots", true)
         return config
     }
 }
