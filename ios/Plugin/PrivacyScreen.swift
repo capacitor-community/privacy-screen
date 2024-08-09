@@ -21,7 +21,10 @@ import UIKit
         }
 
         self.window = window
-        configurePreventionScreenshot()
+        let disableScreenshots = config.disableScreenshots ?? true
+        if disableScreenshots {
+            configurePreventionScreenshot()
+        }
     }
 
     public func configurePreventionScreenshot() {
