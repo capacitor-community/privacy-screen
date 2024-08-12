@@ -53,7 +53,7 @@ These configuration values are available:
 | **`enable`**      | <code>boolean</code>                                                            | Configure whether the plugin should be enabled from startup. Only available for Android and iOS.                                                            | <code>true</code>     |
 | **`imageName`**   | <code>string</code>                                                             | Configure whether the plugin should display a custom image from assets instead of a default background gray for the privacy screen. Only available for iOS. | <code>""</code>       |
 | **`contentMode`** | <code>'center' \| 'scaleToFill' \| 'scaleAspectFit' \| 'scaleAspectFill'</code> | Configure the content mode of displayed image. Only available for iOS.                                                                                      | <code>"center"</code> |
-| **`disableScreenshots`** | <code>boolean</code>                                                            | Configure whether the plugin should disable/enable the possibility of taking screenshots. Only available for iOS.                                           | <code>true</code>     |
+| **`preventScreenshots`** | <code>boolean</code>                                                            | Configure whether the plugin should disable/enable the possibility of taking screenshots. Only available for iOS.                                           | <code>true</code>     |
 
 ### Examples
 
@@ -66,7 +66,7 @@ In `capacitor.config.json`:
       "enable": true,
       "imageName": "Splashscreen",
       "contentMode": "scaleAspectFit",
-      "disableScreenshots": true
+      "preventScreenshots": true
     }
   }
 }
@@ -85,7 +85,7 @@ const config: CapacitorConfig = {
       enable: true,
       imageName: "Splashscreen",
       contentMode: "scaleAspectFit",
-      disableScreenshots: true,
+      preventScreenshots: true,
     },
   },
 };

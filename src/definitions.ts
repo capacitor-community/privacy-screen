@@ -47,8 +47,9 @@ declare module '@capacitor/cli' {
        *
        * @default true
        * @example true
+       * @since 5.2.0
        */
-      disableScreenshots?: boolean;
+      preventScreenshots?: boolean;
     };
   }
 }
