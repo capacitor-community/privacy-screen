@@ -40,6 +40,16 @@ declare module '@capacitor/cli' {
         | 'scaleToFill'
         | 'scaleAspectFit'
         | 'scaleAspectFill';
+      /**
+       * Configure whether the plugin should prevent screenshots if enabled.
+       *
+       * Only available for iOS.
+       *
+       * @default true
+       * @example false
+       * @since 5.2.0
+       */
+      preventScreenshots?: boolean;
     };
   }
 }
