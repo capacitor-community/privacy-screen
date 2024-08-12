@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.0](https://github.com/capacitor-community/privacy-screen/compare/v5.1.3...v5.2.0) (2024-08-12)
+
+
+### Features
+
+* **ios:** add `preventScreenshots` configuration option ([#105](https://github.com/capacitor-community/privacy-screen/issues/105)) ([9276f48](https://github.com/capacitor-community/privacy-screen/commit/9276f482a75340409acc8347403c8dc832070b74))
+
 ### [5.1.3](https://github.com/capacitor-community/privacy-screen/compare/v5.1.2...v5.1.3) (2024-08-09)
 
 
