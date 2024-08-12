@@ -4,5 +4,5 @@ public struct PrivacyScreenConfig {
     var enable = true
     var imageName: String? = ""
     var contentMode: String? = "center"
-    var disableScreenshots: Bool? = true
+    var preventScreenshots: Bool? = true
 }
