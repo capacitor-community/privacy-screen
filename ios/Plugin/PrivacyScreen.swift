@@ -71,7 +71,7 @@ import UIKit
                 while let topVC = rootVC.presentedViewController {
                     rootVC = topVC
                 }
-                if rootVC.presentedViewController != self.privacyViewController {
+                if rootVC.presentedViewController != self.privacyViewController && !self.privacyViewController.isBeingPresented && !self.privacyViewController.isBeingDismissed {
                     rootVC.present(self.privacyViewController, animated: false, completion: nil)
                 }
             } else {
