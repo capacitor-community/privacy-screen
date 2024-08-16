@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.2.1](https://github.com/capacitor-community/privacy-screen/compare/v5.2.0...v5.2.1) (2024-08-16)
+
+
+### Bug Fixes
+
+* **ios:** black screen ([#107](https://github.com/capacitor-community/privacy-screen/issues/107)) ([dbea371](https://github.com/capacitor-community/privacy-screen/commit/dbea371c7a1a9d8ab2202d3b852c3671a806462d))
+
 ## [5.2.0](https://github.com/capacitor-community/privacy-screen/compare/v5.1.3...v5.2.0) (2024-08-12)
 
 
