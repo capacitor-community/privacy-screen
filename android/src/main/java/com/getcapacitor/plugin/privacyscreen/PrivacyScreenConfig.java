@@ -2,13 +2,22 @@ package com.getcapacitor.plugin.privacyscreen;
 
 public class PrivacyScreenConfig {
 
-    private boolean enable = true;
+    private boolean privacyScreenEnabled = true;
+    private boolean screenshotProtectionEnabled = true;
 
-    public boolean isEnabled() {
-        return enable;
+    public boolean isPrivacyScreenEnabled() {
+        return privacyScreenEnabled;
     }
 
-    public void setEnable(boolean enable) {
-        this.enable = enable;
+    public void setPrivacyScreenEnabled(boolean privacyScreenEnabled) {
+        this.privacyScreenEnabled = privacyScreenEnabled;
+    }
+
+    public boolean isScreenshotProtectionEnabled() {
+        return screenshotProtectionEnabled;
+    }
+
+    public void setScreenshotProtectionEnabled(boolean screenshotProtectionEnabled) {
+        this.screenshotProtectionEnabled = screenshotProtectionEnabled;
     }
 }
