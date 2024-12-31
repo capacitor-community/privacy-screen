@@ -10,28 +10,43 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 @CapacitorPlugin(name = "PrivacyScreen")
 public class PrivacyScreenPlugin extends Plugin {
 
-    private PrivacyScreen implementation;
+    private PrivacyScreen privacyScreen;
 
     public void load() {
         PrivacyScreenConfig config = getPrivacyScreenConfig();
-        implementation = new PrivacyScreen(this, config);
+        privacyScreen = new PrivacyScreen(this, config);
     }
 
     @PluginMethod
-    public void enable(final PluginCall call) {
-        implementation.enable(() -> call.resolve());
+    public void enablePrivacyScreen(final PluginCall call) {
+        privacyScreen.enablePrivacyScreen(() -> call.resolve());
     }
 
     @PluginMethod
-    public void disable(final PluginCall call) {
-        implementation.disable(() -> call.resolve());
+    public void disablePrivacyScreen(final PluginCall call) {
+        privacyScreen.disablePrivacyScreen(() -> call.resolve());
+    }
+
+    @PluginMethod
+    public void enableScreenshotProtection(final PluginCall call) {
+        privacyScreen.enableScreenshotProtection(() -> call.resolve());
+    }
+
+    @PluginMethod
+    public void disableScreenshotProtection(final PluginCall call) {
+        privacyScreen.disableScreenshotProtection(() -> call.resolve());
     }
 
     private PrivacyScreenConfig getPrivacyScreenConfig() {
         PrivacyScreenConfig config = new PrivacyScreenConfig();
 
-        Boolean enable = getConfig().getBoolean("enable", config.isEnabled());
-        config.setEnable(enable);
+        // Fetch and set privacy screen enabled state
+        Boolean privacyScreenEnabled = getConfig().getBoolean("privacyScreenEnabled", config.isPrivacyScreenEnabled());
+        config.setPrivacyScreenEnabled(privacyScreenEnabled);
+
+        // Fetch and set screenshot protection enabled state
+        Boolean screenshotProtectionEnabled = getConfig().getBoolean("screenshotProtectionEnabled", config.isScreenshotProtectionEnabled());
+        config.setScreenshotProtectionEnabled(screenshotProtectionEnabled);
 
         return config;
     }
