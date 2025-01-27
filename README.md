@@ -75,7 +75,7 @@ In `capacitor.config.json`:
 In `capacitor.config.ts`:
 
 ```ts
-/// <reference types="@capacitor/privacy-screen" />
+/// <reference types="@capacitor-community/privacy-screen" />
 
 import { CapacitorConfig } from '@capacitor/cli';
 
@@ -122,9 +122,9 @@ const disable = async () => {
 
 * [`enable()`](#enable)
 * [`disable()`](#disable)
-* [`addListener('screenRecordingStarted', ...)`](#addlistenerscreenrecordingstarted)
-* [`addListener('screenRecordingStopped', ...)`](#addlistenerscreenrecordingstopped)
-* [`addListener('screenshotTaken', ...)`](#addlistenerscreenshottaken)
+* [`addListener('screenRecordingStarted', ...)`](#addlistenerscreenrecordingstarted-)
+* [`addListener('screenRecordingStopped', ...)`](#addlistenerscreenrecordingstopped-)
+* [`addListener('screenshotTaken', ...)`](#addlistenerscreenshottaken-)
 * [`removeAllListeners()`](#removealllisteners)
 * [Interfaces](#interfaces)
 
