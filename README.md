@@ -6,7 +6,7 @@ Capacitor Privacy Screen Plugin
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/maintenance/yes/2024?style=flat-square" />
+  <img src="https://img.shields.io/maintenance/yes/2025?style=flat-square" />
   <a href="https://github.com/capacitor-community/privacy-screen/actions?query=workflow%3A%22CI%22"><img src="https://img.shields.io/github/actions/workflow/status/capacitor-community/privacy-screen/ci.yml?branch=main&style=flat-square" /></a>
   <a href="https://www.npmjs.com/package/@capacitor-community/privacy-screen"><img src="https://img.shields.io/npm/l/@capacitor-community/privacy-screen?style=flat-square" /></a>
 <br>
