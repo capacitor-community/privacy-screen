@@ -35,11 +35,7 @@ declare module '@capacitor/cli' {
        * @example "scaleAspectFit"
        * @see https://developer.apple.com/documentation/uikit/uiview/1622619-contentmode
        */
-      contentMode?:
-        | 'center'
-        | 'scaleToFill'
-        | 'scaleAspectFit'
-        | 'scaleAspectFill';
+      contentMode?: 'center' | 'scaleToFill' | 'scaleAspectFit' | 'scaleAspectFill';
       /**
        * Configure whether the plugin should prevent screenshots if enabled.
        *
@@ -78,10 +74,7 @@ export interface PrivacyScreenPlugin {
    *
    * @since 3.0.2
    */
-  addListener(
-    eventName: 'screenRecordingStarted',
-    listenerFunc: () => void,
-  ): Promise<PluginListenerHandle>;
+  addListener(eventName: 'screenRecordingStarted', listenerFunc: () => void): Promise<PluginListenerHandle>;
   /**
    * Called when the screen recording is stopped.
    *
@@ -89,10 +82,7 @@ export interface PrivacyScreenPlugin {
    *
    * @since 3.0.2
    */
-  addListener(
-    eventName: 'screenRecordingStopped',
-    listenerFunc: () => void,
-  ): Promise<PluginListenerHandle>;
+  addListener(eventName: 'screenRecordingStopped', listenerFunc: () => void): Promise<PluginListenerHandle>;
   /**
    * Called when the screenshot is taken.
    *
@@ -100,10 +90,7 @@ export interface PrivacyScreenPlugin {
    *
    * @since 3.2.0
    */
-  addListener(
-    eventName: 'screenshotTaken',
-    listenerFunc: () => void,
-  ): Promise<PluginListenerHandle>;
+  addListener(eventName: 'screenshotTaken', listenerFunc: () => void): Promise<PluginListenerHandle>;
   /**
    * Remove all listeners for this plugin.
    *

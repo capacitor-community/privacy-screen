@@ -21,23 +21,19 @@ public class PrivacyScreen {
     public void enable(EnableCallback callback) {
         plugin
             .getBridge()
-            .executeOnMainThread(
-                () -> {
-                    addFlags();
-                    callback.success();
-                }
-            );
+            .executeOnMainThread(() -> {
+                addFlags();
+                callback.success();
+            });
     }
 
     public void disable(DisableCallback callback) {
         plugin
             .getBridge()
-            .executeOnMainThread(
-                () -> {
-                    clearFlags();
-                    callback.success();
-                }
-            );
+            .executeOnMainThread(() -> {
+                clearFlags();
+                callback.success();
+            });
     }
 
     private void addFlags() {
