@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/capacitor-community/privacy-screen/compare/v5.2.1...v6.0.0) (2025-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* update to Capacitor 7 (#115)
+
+### Features
+
+* update to Capacitor 7 ([#115](https://github.com/capacitor-community/privacy-screen/issues/115)) ([37ec537](https://github.com/capacitor-community/privacy-screen/commit/37ec5376e07c20b598e04cd1b472307e2aeb58c6))
+
 ### [5.2.1](https://github.com/capacitor-community/privacy-screen/compare/v5.2.0...v5.2.1) (2024-08-16)
 
 
