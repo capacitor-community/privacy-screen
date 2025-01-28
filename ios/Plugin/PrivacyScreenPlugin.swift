@@ -12,11 +12,22 @@ public class PrivacyScreenPlugin: CAPPlugin {
     override public func load() {
         let config = getPrivacyScreenConfig()
         self.implementation = PrivacyScreen(plugin: self, config: config, window: UIApplication.shared.delegate?.window as? UIWindow)
+        
+        if(config.foregroundBackgroundEvent ?? false) {
+            NotificationCenter.default.addObserver(self, selector: #selector(self.handleWillEnterForegroundNotification),
+                                                   name: UIScene.willEnterForegroundNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.handleDidEnterBackgroundNotification),
+                                                   name: UIScene.didEnterBackgroundNotification, object: nil)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleDidBecomeActiveNotification),
-                                               name: UIApplication.didBecomeActiveNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleWillResignActiveNotification),
-                                               name: UIApplication.willResignActiveNotification, object: nil)
+        } else {
+            NotificationCenter.default.addObserver(self, selector: #selector(self.handleDidBecomeActiveNotification),
+                                                   name: UIApplication.didBecomeActiveNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.handleWillResignActiveNotification),
+                                                   name: UIApplication.willResignActiveNotification, object: nil)
+        }
+
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleCapturedDidChangeNotification),
                                                name: UIScreen.capturedDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleUserDidTakeScreenshotNotification),
@@ -40,13 +51,20 @@ public class PrivacyScreenPlugin: CAPPlugin {
             call.resolve()
         })
     }
-
+    
+    @objc private func handleDidBecomeActiveNotification() {
+        implementation?.hidePrivacyController()
+    }
+    
     @objc private func handleWillResignActiveNotification() {
-        implementation?.handleWillResignActiveNotification()
+        implementation?.showPrivacyController()
     }
 
-    @objc private func handleDidBecomeActiveNotification() {
-        implementation?.handleDidBecomeActiveNotification()
+    @objc private func handleWillEnterForegroundNotification() {
+        implementation?.hidePrivacyController()
+    }
+    @objc private func handleDidEnterBackgroundNotification() {
+        implementation?.showPrivacyController()
     }
 
     @objc private func handleCapturedDidChangeNotification() {
@@ -71,6 +89,7 @@ public class PrivacyScreenPlugin: CAPPlugin {
         config.imageName = getConfig().getString("imageName", config.imageName)
         config.contentMode = getConfig().getString("contentMode", config.contentMode)
         config.preventScreenshots = getConfig().getBoolean("preventScreenshots", true)
+        config.foregroundBackgroundEvent = getConfig().getBoolean("foregroundBackgroundEvent", false)
         return config
     }
 }

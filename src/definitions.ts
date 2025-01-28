@@ -46,6 +46,18 @@ declare module '@capacitor/cli' {
        * @since 5.2.0
        */
       preventScreenshots?: boolean;
+      /**
+       * Configure whether the plugin should use Foreground/Background events [UIScene for iOS 13+) for triggering.
+       *
+       * Only available for iOS.
+       *
+       * @default false
+       * @example false
+       * @since 5.2.0
+       * @see https://developer.apple.com/documentation/uikit/uiscene/3197922-didenterbackgroundnotification
+       * @see https://developer.apple.com/documentation/uikit/uiscene/3197925-willenterforegroundnotification/
+       */
+      foregroundBackgroundEvent?: boolean;
     };
   }
 }
