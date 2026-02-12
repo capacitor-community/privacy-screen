@@ -1,3 +1,6 @@
+> [!WARNING]
+> This plugin is in **maintenance mode**. It will only receive critical bug fixes and security updates. New features will not be added. Please consider using the official [Capacitor Privacy Screen Plugin](https://capacitorjs.com/docs/apis/privacy-screen) instead, which is available since Capacitor 7.
+
 <p align="center"><br><img src="https://user-images.githubusercontent.com/236501/85893648-1c92e880-b7a8-11ea-926d-95355b8175c7.png" width="128" height="128" /></p>
 <h3 align="center">Privacy Screen</h3>
 <p align="center"><strong><code>@capacitor-community/privacy-screen</code></strong></p>
@@ -120,13 +123,25 @@ const disable = async () => {
 
 <docgen-index>
 
-* [`enable()`](#enable)
-* [`disable()`](#disable)
-* [`addListener('screenRecordingStarted', ...)`](#addlistenerscreenrecordingstarted-)
-* [`addListener('screenRecordingStopped', ...)`](#addlistenerscreenrecordingstopped-)
-* [`addListener('screenshotTaken', ...)`](#addlistenerscreenshottaken-)
-* [`removeAllListeners()`](#removealllisteners)
-* [Interfaces](#interfaces)
+- [Introduction](#introduction)
+  - [Using the Camera Plugin](#using-the-camera-plugin)
+- [Maintainers](#maintainers)
+- [Installation](#installation)
+- [Configuration](#configuration)
+  - [Examples](#examples)
+- [Demo](#demo)
+- [Usage](#usage)
+- [API](#api)
+  - [enable()](#enable)
+  - [disable()](#disable)
+  - [addListener('screenRecordingStarted', ...)](#addlistenerscreenrecordingstarted-)
+  - [addListener('screenRecordingStopped', ...)](#addlistenerscreenrecordingstopped-)
+  - [addListener('screenshotTaken', ...)](#addlistenerscreenshottaken-)
+  - [removeAllListeners()](#removealllisteners)
+  - [Interfaces](#interfaces)
+    - [PluginListenerHandle](#pluginlistenerhandle)
+- [Changelog](#changelog)
+- [License](#license)
 
 </docgen-index>
 
