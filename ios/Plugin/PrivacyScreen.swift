@@ -9,7 +9,8 @@ import UIKit
     private var isEnabled = false
     private var window: UIWindow?
     private var screenPrevent = UITextField()
-
+    private var privacyProtectionWindow: UIWindow?
+    
     init(plugin: PrivacyScreenPlugin, config: PrivacyScreenConfig, window: UIWindow?) {
         self.plugin = plugin
         self.config = config
@@ -59,10 +60,32 @@ import UIKit
         }
     }
 
-    @objc public func handleWillResignActiveNotification() {
+    private func showPrivacyProtectionWindow() {
+        guard let windowScene = self.window?.windowScene else {
+            return
+        }
+
+        self.privacyProtectionWindow = UIWindow(windowScene: windowScene)
+        self.privacyProtectionWindow?.rootViewController = self.privacyViewController
+        self.privacyProtectionWindow?.windowLevel = .alert + 1
+        self.privacyProtectionWindow?.makeKeyAndVisible()
+    }
+    
+    private func hidePrivacyProtectionWindow() {
+        self.privacyProtectionWindow?.isHidden = true
+        self.privacyProtectionWindow = nil
+    }
+    
+    @objc public func showPrivacyController() {
         guard self.isEnabled else {
             return
         }
+        
+        if(self.config.foregroundBackgroundEvent ?? false) {
+            self.showPrivacyProtectionWindow()
+            return;
+        }
+        
         DispatchQueue.main.async {
             let window = UIApplication.shared.connectedScenes
                 .filter({$0.activationState == .foregroundActive || $0.activationState == .foregroundInactive})
@@ -81,8 +104,14 @@ import UIKit
             }
         }
     }
+    
 
-    @objc public func handleDidBecomeActiveNotification() {
+
+    @objc public func hidePrivacyController() {
+        if(self.config.foregroundBackgroundEvent ?? false) {
+            self.hidePrivacyProtectionWindow()
+            return;
+        }
         DispatchQueue.main.async {
             self.privacyViewController.dismiss(animated: false, completion: nil)
         }
