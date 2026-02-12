@@ -123,25 +123,13 @@ const disable = async () => {
 
 <docgen-index>
 
-- [Introduction](#introduction)
-  - [Using the Camera Plugin](#using-the-camera-plugin)
-- [Maintainers](#maintainers)
-- [Installation](#installation)
-- [Configuration](#configuration)
-  - [Examples](#examples)
-- [Demo](#demo)
-- [Usage](#usage)
-- [API](#api)
-  - [enable()](#enable)
-  - [disable()](#disable)
-  - [addListener('screenRecordingStarted', ...)](#addlistenerscreenrecordingstarted-)
-  - [addListener('screenRecordingStopped', ...)](#addlistenerscreenrecordingstopped-)
-  - [addListener('screenshotTaken', ...)](#addlistenerscreenshottaken-)
-  - [removeAllListeners()](#removealllisteners)
-  - [Interfaces](#interfaces)
-    - [PluginListenerHandle](#pluginlistenerhandle)
-- [Changelog](#changelog)
-- [License](#license)
+* [`enable()`](#enable)
+* [`disable()`](#disable)
+* [`addListener('screenRecordingStarted', ...)`](#addlistenerscreenrecordingstarted-)
+* [`addListener('screenRecordingStopped', ...)`](#addlistenerscreenrecordingstopped-)
+* [`addListener('screenshotTaken', ...)`](#addlistenerscreenshottaken-)
+* [`removeAllListeners()`](#removealllisteners)
+* [Interfaces](#interfaces)
 
 </docgen-index>
 
