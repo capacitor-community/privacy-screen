@@ -11,7 +11,7 @@ public class PrivacyScreenPlugin: CAPPlugin, CAPBridgedPlugin {
     public let jsName = "PrivacyScreen"
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "enable", returnType: CAPPluginReturnPromise),
-        CAPPluginMethod(name: "disable", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "disable", returnType: CAPPluginReturnPromise)
     ]
     private var implementation: PrivacyScreen?
 
