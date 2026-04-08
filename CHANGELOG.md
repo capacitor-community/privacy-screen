@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.0](https://github.com/capacitor-community/privacy-screen/compare/v6.0.0...v6.1.0) (2026-04-08)
+
+
+### Features
+
+* add SPM support ([#117](https://github.com/capacitor-community/privacy-screen/issues/117)) ([b19a756](https://github.com/capacitor-community/privacy-screen/commit/b19a7566ffdd0cc7fd620a19170bd666fa748fa1))
+
 ## [6.0.0](https://github.com/capacitor-community/privacy-screen/compare/v5.2.1...v6.0.0) (2025-01-28)
 
 
